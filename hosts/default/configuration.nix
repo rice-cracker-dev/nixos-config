@@ -104,6 +104,7 @@
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
     users = {
       "khoa" = import ./home.nix;
     };
