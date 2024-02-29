@@ -89,8 +89,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "khoa"; 
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "khoa"; 
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
