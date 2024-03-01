@@ -1,6 +1,11 @@
 { config, ... }:
 
 {
+  # Install Nvidia-related packages
+  environment.systemPackages = with pkgs; [
+    lshw
+  ];
+
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
@@ -17,6 +22,8 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    open = false;
 
     prime = {
       sync.enable = true;
