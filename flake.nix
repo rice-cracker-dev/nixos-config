@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
+    # neovim-flake.url = "github:jordanisaacs/neovim-flake";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,18 +13,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ 
-          ./hosts/default/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
+  outputs = { self, nixpkgs, ... }@inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [ 
+        ./hosts/default/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
     };
+  };
 }

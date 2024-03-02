@@ -1,16 +1,32 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
-  # Install Nvidia-related packages
+  # Libva driver
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+
+  # Install some packages
   environment.systemPackages = with pkgs; [
     lshw
   ];
+
+  # Enable CUDA
+  nixpkgs.config.cudaSupport = true;
 
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+  
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 
   # Load nvidia driver
@@ -18,15 +34,19 @@
 
   # Nvidia settings
   hardware.nvidia = {
-    # Modesettings
     modesetting.enable = true;
+    
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     open = false;
 
     prime = {
-      sync.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";

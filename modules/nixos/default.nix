@@ -9,5 +9,6 @@
     ./hyprland.nix
     ./bootloader.nix
     ./nvidia.nix
+    ./packages.nix
   ];
 }
