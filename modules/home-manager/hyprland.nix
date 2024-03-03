@@ -29,13 +29,6 @@
       "$fileManager" = "dolphin";
 
       env = [
-      	# nvidia stuff
-      	"LIBVA_DRIVER_NAME,nvidia"
-	      "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-	      "WLR_NO_HARDWARE_CURSORS,1"
-	      "WLR_DRM_DEVICES,/dev/dri/card1"
-
         # xdg
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
@@ -46,8 +39,8 @@
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
-	      # utilities
-	      "TERMINAL,$terminal"
+        # utilities
+        "TERMINAL,$terminal"
         "EDITOR,$editor"
         "BROWSER,$browser"
       ];
@@ -98,6 +91,9 @@
         # close active window
         "alt, f4, killactive"
 
+        # close hyprland session
+        "$mainMod, m, exit"
+
         # move focus
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -105,7 +101,7 @@
         "$mainMod, down, movefocus, d"
 	      
         # switch workspaces
-	      "$mainMod, 1, workspace, 1"
+        "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
         "$mainMod, 4, workspace, 4"
@@ -131,9 +127,9 @@
         "$mainMod, mouse_up, workspace, e-1"
 
         # screenshotting
-	", print, exec, grim - | wl-copy"
-	"CTRL, print, exec, grim -g \"$(slurp)\" - | wl-copy"
-	"ALT, print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+        ", print, exec, grim - | wl-copy"
+        "CTRL, print, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "ALT, print, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
 
       bindm = [
@@ -145,7 +141,7 @@
       binde = [
         # pipewire volume control
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
         # brightness control

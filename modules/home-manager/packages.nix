@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     # cli tools
-    git gh
     curl wget
     fastfetch
 
@@ -16,5 +15,12 @@
     thunderbird
     vivaldi vivaldi-ffmpeg-codecs
     vesktop
+  
+    # development tools
+    vscode
+    jetbrains.webstorm
+  
+    # compilers and runtimes
+    nodejs
   ];
 }

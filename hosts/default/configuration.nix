@@ -2,14 +2,24 @@
 
 {
   imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.nixvim.nixosModules.nixvim
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/nixos/default.nix
-    inputs.home-manager.nixosModules.default
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+  };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+    
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -18,7 +28,7 @@
   networking.hostName = "nixos"; # Define your hostname.
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;  
+  services.xserver.enable = true; 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.khoa = {
@@ -45,5 +55,5 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

@@ -7,8 +7,8 @@
     enable = true;
     
     # enable oh-my-zsh
-    # programs.oh-my-zsh.enable = true;
-
+    oh-my-zsh.enable = true;
+    
     # enable plugins
     enableCompletion = true;
     enableAutosuggestions = true;
@@ -19,6 +19,12 @@
     # enable starship
     enable = true;
     enableZshIntegration = true;
+  };
+
+  # shell aliases
+  home.shellAliases = {
+    nixos-rebuild-flake = "sudo nixos-rebuild switch --flake";
+    nixos-update-flake = "nix flake update && sudo nixos-rebuild switch --flake";
   };
 }
 
