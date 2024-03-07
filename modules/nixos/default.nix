@@ -13,5 +13,6 @@
     ./nixvim
     ./polkit
     ./networking
+    ./pam
   ];
 }
