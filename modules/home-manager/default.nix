@@ -2,11 +2,14 @@
 
 {
   imports = [
-    ./hyprland.nix
-    ./theme.nix
-    ./neovim.nix
-    ./shell.nix
-    ./packages.nix
-    ./git.nix
+    ./hyprland
+    ./theme
+    ./shell
+    ./packages
+    ./git
+    ./keyring
   ];
+
+  # enable KDE connect
+  services.kdeconnect.enable = true;
 }

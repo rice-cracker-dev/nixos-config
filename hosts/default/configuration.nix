@@ -3,47 +3,53 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
-    inputs.nixvim.nixosModules.nixvim
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/nixos/default.nix
   ];
 
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
-  };
+  # nix settings
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      substituters = [
+        "https://cache.garnix.io"
+        "https://cuda-maintainers.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      ];
+    };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
     
-  # Allow unfree packages
+  # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true; 
-  networking.hostName = "nixos"; # Define your hostname.
+  # enable the x11 windowing system.
+  services.xserver.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true; 
+  # enable the zsh shell
+  programs.zsh.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # set default user shell
+  users.defaultUserShell = pkgs.zsh;
+
+  # define my main user account
   users.users.khoa = {
     isNormalUser = true;
     description = "khoa";
     extraGroups = [ "networkmanager" "wheel" ];
-  };
+  }; 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.  
-  ];
-
-  # Home Manager
+  # set home manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
@@ -52,7 +58,7 @@
     };
   };
 
-  # Enable the OpenSSH daemon.
+  # enable the ssh daemon.
   services.openssh.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?

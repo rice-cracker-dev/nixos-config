@@ -2,13 +2,16 @@
 
 {
   imports = [
-    ./sound.nix
-    ./locale.nix
-    ./displayManager.nix
-    ./plasma.nix
-    ./hyprland.nix
-    ./bootloader.nix
-    ./nvidia.nix
-    ./packages.nix
+    ./sound
+    ./locale
+    ./displayManager
+    ./plasma
+    ./hyprland
+    ./bootloader
+    ./nvidia
+    ./packages
+    ./nixvim
+    ./polkit
+    ./networking
   ];
 }

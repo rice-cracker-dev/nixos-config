@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+
+
   # enable qt
   qt.enable = true;
   

@@ -29,6 +29,9 @@
       "$fileManager" = "dolphin";
 
       env = [
+        # use igpu for hyprland
+        "WLR_DRM_DEVICES,/dev/dri/card1"
+
         # xdg
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
@@ -44,17 +47,32 @@
         "EDITOR,$editor"
         "BROWSER,$browser"
       ];
+
+      windowrulev2 = [
+        # jetbrains fixes
+        "windowdance,class:^(jetbrains-.*)$,floating:1"
+        "center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        "nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        "noborder,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        "center,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        "stayfocused,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        "noborder,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        "nofocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1"
+        "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
+      ];
       
-      monitor = ", preferred, auto, 1";
+      monitor = ",preferred,auto,1";
 
       input = {
         sensitivity = "-0.25";
         accel_profile = "flat";
+        follow_mouse = "2";
       };
 
-      "device:elan1300:00-04f3:3057-touchpad" = {
-        enabled = "false";
-      };
+      # disable asus x510uq touchpad
+      # "device:elan1300:00-04f3:3057-touchpad" = {
+      #   enabled = "false";
+      # };
 
       general = {
         gaps_in = "4";

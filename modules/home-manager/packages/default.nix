@@ -2,10 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # cli tools
-    curl wget
-    fastfetch
-
     # desktop utilities
     dolphin
 
@@ -15,12 +11,15 @@
     thunderbird
     vivaldi vivaldi-ffmpeg-codecs
     vesktop
+    # anydesk # remote access
+    sunshine
   
     # development tools
     vscode
     jetbrains.webstorm
+    putty
   
     # compilers and runtimes
-    nodejs
+    nodejs nodePackages.pnpm
   ];
 }
