@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [ ./hyprlock.nix ];
+
   home.packages = with pkgs; [
     rofi-wayland
     
@@ -50,15 +52,23 @@
 
       windowrulev2 = [
         # jetbrains fixes
-        "windowdance,class:^(jetbrains-.*)$,floating:1"
-        "center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
-        "nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
-        "noborder,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
-        "center,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        "stayfocused,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        "noborder,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        "nofocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1"
-        "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
+        "windowdance, class:^(jetbrains-.*)$, floating:1"
+        "center, class:^(jetbrains-.*)$, title:^(splash)$, floating:1"
+        "nofocus, class:^(jetbrains-.*)$, title:^(splash)$, floating:1"
+        "noborder, class:^(jetbrains-.*)$, title:^(splash)$, floating:1"
+        "center, class:^(jetbrains-.*)$, title:^( )$, floating:1"
+        "stayfocused, class:^(jetbrains-.*)$, title:^( )$, floating:1"
+        "noborder, class:^(jetbrains-.*)$, title:^( )$, floating:1"
+        "nofocus, class:^(jetbrains-.*)$, title:^(win.*)$, floating:1"
+        "noinitialfocus, class:^(jetbrains-.*), title:^(win.*)"
+
+        # vivaldi
+        "float, class:^(vivaldi)$, title:^(Vivaldi Settings)$"
+
+        # steam
+        "float, class:(steam), title:(Steam)"
+        "float, class:(steam), title:(Friends List)"
+        "nofocus, class:^(steam)$, title:^()$"
       ];
       
       monitor = ",preferred,auto,1";
