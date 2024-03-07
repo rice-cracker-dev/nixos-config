@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # desktop utilities
-    nemo
+    cinnamon.nemo-with-extensions
 
     # desktop apps
     kitty
