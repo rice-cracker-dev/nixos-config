@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # desktop utilities
-    dolphin
+    nemo
 
     # desktop apps
     kitty
