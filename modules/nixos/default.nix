@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./sound
     ./locale
@@ -10,9 +8,11 @@
     ./bootloader
     ./nvidia
     ./packages
-    ./nixvim
     ./polkit
     ./networking
     ./pam
+    ./plymouth
   ];
+
+  services.upower.enable = true;
 }

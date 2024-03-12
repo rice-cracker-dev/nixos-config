@@ -1,0 +1,22 @@
+import { TrayItem } from "types/service/systemtray";
+
+const systemTray = await Service.import('systemtray');
+
+const SystemTrayWidgetItem = (item: TrayItem) => {
+  return Widget.Button({
+    child: Widget.Icon().bind('icon', item, 'icon'),
+  });
+};
+
+const SystemTrayWidget = () => Widget.Box({
+  className: 'card',
+  visible: systemTray.bind('items').as(i => i.length > 0),
+  child: Widget.Box({ spacing: 8 }).bind(
+    'children',
+    systemTray,
+    'items',
+    (i) => i.map(SystemTrayWidgetItem)
+  ),
+});
+
+export default SystemTrayWidget;

@@ -1,11 +1,17 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  # cursor
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
 
-{
-
+    # enable gtk
+    gtk.enable = true;
+  };
 
   # enable qt
   qt.enable = true;
-  
+
   # qt platform theme
   qt.platformTheme = "gtk";
 
@@ -14,18 +20,23 @@
   qt.style.package = pkgs.adwaita-qt;
 
   # enable gtk
-  gtk.enable = true;
+  gtk = {
+    enable = true;
 
-  # gtk cursor
-  # gtk.cursorTheme.package =
-  # gtk.cursorTheme.name = 
+    # gtk theme
+    theme = {
+      name = "Catppuccin-Macchiato-Standard-Mauve-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["mauve"];
+        size = "standard";
+        variant = "macchiato";
+      };
+    };
 
-  # gtk theme
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3";
-
-  # gtk icon theme
-  gtk.iconTheme.package = pkgs.papirus-icon-theme;
-  gtk.iconTheme.name = "Papirus-Dark";
+    # gtk icon theme
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+  };
 }
-

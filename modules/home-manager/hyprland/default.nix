@@ -1,16 +1,20 @@
-{ pkgs, lib, ... }:
-
 {
-  imports = [ ./hyprlock.nix ];
+  pkgs,
+  config,
+  ...
+}: {
+  imports = [
+    ./hyprlock.nix
+    ./hyprpaper.nix
+  ];
 
   home.packages = with pkgs; [
-    rofi-wayland
-    
     # screen capturing
-    grim slurp
+    grim
+    slurp
     imagemagick
     swappy
-    
+
     # clipboard
     wl-clipboard
 
@@ -21,18 +25,22 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    settings = {
+    settings = with config.colorScheme.palette; {
       # default variables
       "$mainMod" = "SUPER";
-      "$terminal" = "kitty";
+      "$terminal" = "foot";
       "$editor" = "nvim";
       "$browser" = "vivaldi";
       "$launcher" = "rofi -show drun";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "nemo";
+
+      exec-once = [
+        "hyprpaper"
+      ];
 
       env = [
         # use igpu for hyprland
-        "WLR_DRM_DEVICES,/dev/dri/card1"
+        # "WLR_DRM_DEVICES,/dev/dri/card1"
 
         # xdg
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -48,6 +56,9 @@
         "TERMINAL,$terminal"
         "EDITOR,$editor"
         "BROWSER,$browser"
+
+        # cursor
+        # "XCURSOR_THEME,${config.gtk.cursorTheme.name}"
       ];
 
       windowrulev2 = [
@@ -70,23 +81,27 @@
         "float, class:(steam), title:(Friends List)"
         "nofocus, class:^(steam)$, title:^()$"
       ];
-      
+
       monitor = ",preferred,auto,1";
 
       input = {
         sensitivity = "-0.25";
         accel_profile = "flat";
-        follow_mouse = "2";
+
+        # follow_mouse = "2";
       };
 
-      # disable asus x510uq touchpad
-      # "device:elan1300:00-04f3:3057-touchpad" = {
-      #   enabled = "false";
+      # device = {
+      #   "elan1300:00-04f3:3057-touchpad".enabled = "false";
       # };
 
       general = {
         gaps_in = "4";
         gaps_out = "8";
+
+        border_size = "1";
+        "col.inactive_border" = "0x40${base05}";
+        "col.active_border" = "0xff${base0E}";
 
         layout = "dwindle";
       };
@@ -94,10 +109,12 @@
       decoration = {
         rounding = "4";
 
-        drop_shadow = "true";
-        shadow_range = "4";
-        shadow_render_power = "3";
-        "col.shadow" = "rgba(1a1a1aee)";
+        drop_shadow = "false";
+        # shadow_range = "4";
+        # shadow_render_power = "3";
+        # "col.shadow" = "rgba(1a1a1aee)";
+
+        dim_inactive = "true";
 
         blur = {
           enabled = "true";
@@ -105,6 +122,15 @@
           passes = "4";
         };
       };
+
+      layerrule = [
+        "blur, rofi"
+        "ignorezero, rofi"
+
+        # ags
+        "blur, bar"
+        "ignorezero, bar"
+      ];
 
       bind = [
         # apps
@@ -115,7 +141,7 @@
 
         # toggle floating window
         "$mainMod, v, togglefloating"
-        
+
         # close active window
         "alt, f4, killactive"
 
@@ -127,7 +153,7 @@
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
-	      
+
         # switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"

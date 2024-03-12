@@ -1,0 +1,67 @@
+@import '/home/khoa/.config/colorScheme/style.scss';
+
+* {
+  all: unset;
+}
+
+window {
+  background: transparent;
+  color: @base05;
+
+  font-family: 'JetBrains Mono';
+  font-size: 14px;
+}
+
+button {
+  background-color: transparent;
+
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+button.active {
+  background-color: @base0E;
+  color: @base00;
+}
+
+button.icon {
+  padding: 0px;
+  min-height: 28px;
+  min-width: 28px;
+}
+
+scale trough,
+scale trough highlight {
+  background-color: @base00;
+
+  min-height: 4px;
+  border-radius: 2px;
+}
+
+scale trough highlight {
+  background-color: @base0E;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@base05, 0.25);
+
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.card.lg {
+  padding: 4px 12px;
+}
+
+.nerdfont {
+  font-family: 'Symbols Nerd Font';
+}

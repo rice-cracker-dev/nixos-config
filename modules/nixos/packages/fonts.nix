@@ -1,13 +1,18 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # enable fonts
   fonts.fontconfig.enable = true;
 
   # packages
   fonts.packages = with pkgs; [
     # fonts
-    (nerdfonts.override { fonts = ["JetBrainsMono"]; })
+    jetbrains-mono
+
+    # nerd font
+    (nerdfonts.override {
+      fonts = [
+        "NerdFontsSymbolsOnly"
+        "JetBrainsMono"
+      ];
+    })
   ];
 }
-
