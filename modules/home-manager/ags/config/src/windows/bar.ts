@@ -16,8 +16,8 @@ export const BarWindow = () => Widget.Window({
     vertical: false,
     spacing: 8,
     children: [
-      Spacer(),
       HyprlandWorkspaceWidget(),
+      Spacer(),
       SystemTrayWidget(),
       StatusWidget(),
       TimeWidget(),

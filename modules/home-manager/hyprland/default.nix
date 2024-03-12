@@ -120,6 +120,7 @@
           enabled = "true";
           size = "8";
           passes = "4";
+          popups = "true";
         };
       };
 

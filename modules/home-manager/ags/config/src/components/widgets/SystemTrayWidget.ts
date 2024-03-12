@@ -4,6 +4,9 @@ const systemTray = await Service.import('systemtray');
 
 const SystemTrayWidgetItem = (item: TrayItem) => {
   return Widget.Button({
+    className: 'icon',
+    onPrimaryClick: (_, event) => item.activate(event),
+    onSecondaryClick: (_, event) => item.openMenu(event),
     child: Widget.Icon().bind('icon', item, 'icon'),
   });
 };

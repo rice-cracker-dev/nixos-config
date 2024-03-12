@@ -9,6 +9,7 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
     ags.url = "github:Aylur/ags";
     neovim-flake.url = "github:notashelf/neovim-flake";
+    spicetify.url = "the-argus/spicetify-nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
