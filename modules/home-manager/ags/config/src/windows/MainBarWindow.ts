@@ -4,10 +4,11 @@ import StatusWidget from "src/components/widgets/StatusWidget";
 import SystemTrayWidget from "src/components/widgets/SystemTrayWidget";
 import TimeWidget from "src/components/widgets/TimeWidget";
 import HomeWidget from "src/components/widgets/HomeWidget";
+import MprisWidget from "src/components/widgets/MprisWidget";
 
-export const windowName = 'bar';
+export const windowName = 'ags-mainbar';
 
-export const BarWindow = () => Widget.Window({
+const MainBarWindow = () => Widget.Window({
   name: windowName,
   anchor: ['top', 'left', 'right'],
   exclusivity: 'exclusive',
@@ -19,9 +20,12 @@ export const BarWindow = () => Widget.Window({
       HyprlandWorkspaceWidget(),
       Spacer(),
       SystemTrayWidget(),
+      MprisWidget(),
       StatusWidget(),
       TimeWidget(),
       HomeWidget(),
     ],
   }),
 });
+
+export default MainBarWindow;

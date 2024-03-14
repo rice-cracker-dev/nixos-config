@@ -14,7 +14,7 @@ const SystemTrayWidgetItem = (item: TrayItem) => {
 const SystemTrayWidget = () => Widget.Box({
   className: 'card',
   visible: systemTray.bind('items').as(i => i.length > 0),
-  child: Widget.Box({ spacing: 8 }).bind(
+  child: Widget.Box({ spacing: 4 }).bind(
     'children',
     systemTray,
     'items',

@@ -17,6 +17,7 @@
     ./neovim-flake
     ./colorScheme
     ./rofi
+    ./spicetify
   ];
 
   # set assets directory

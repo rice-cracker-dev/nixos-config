@@ -65,6 +65,14 @@ menu {
   padding: 4px;
 }
 
+entry.card {
+  background-color: @base00;
+  border: 1px solid alpha(@base05, 0.25);
+
+  padding: 8px;
+  border-radius: 4px;
+}
+
 .card {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid alpha(@base05, 0.25);
@@ -77,6 +85,32 @@ menu {
   padding: 4px 12px;
 }
 
+.card:hover {
+  border: 1px solid @base0E;
+}
+
+.card.mpris {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+
+  padding: 8px;
+}
+
 .nerdfont {
   font-family: 'Symbols Nerd Font';
+}
+
+.img-cover {
+  min-width: 100px;
+  min-height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+
+.img-icon {
+  min-width: 16px;
+  min-height: 16px;
+  background-size: contain;
+  background-position: center;
 }

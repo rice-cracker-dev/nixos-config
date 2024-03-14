@@ -6,6 +6,7 @@
   imports = [
     ./hyprlock.nix
     ./hyprpaper.nix
+    ./hyprpicker.nix
   ];
 
   home.packages = with pkgs; [
@@ -36,6 +37,7 @@
 
       exec-once = [
         "hyprpaper"
+        "ags"
       ];
 
       env = [
@@ -129,8 +131,8 @@
         "ignorezero, rofi"
 
         # ags
-        "blur, bar"
-        "ignorezero, bar"
+        "blur, ags-*"
+        "ignorezero, ags-*"
       ];
 
       bind = [
@@ -185,6 +187,9 @@
         ", print, exec, grim - | wl-copy"
         "CTRL, print, exec, grim -g \"$(slurp)\" - | wl-copy"
         "ALT, print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+
+        # colorpicker
+        "$mainMod SHIFT, c, exec, hyprpicker -a"
       ];
 
       bindm = [
