@@ -25,6 +25,7 @@
     node2nix
     nodePackages.pnpm
     nodePackages.yarn
+    nodePackages.wrangler
     bun
   ];
 }
