@@ -117,7 +117,7 @@
         # shadow_render_power = "3";
         # "col.shadow" = "rgba(1a1a1aee)";
 
-        dim_inactive = "true";
+        # dim_inactive = "true";
 
         blur = {
           enabled = "true";
