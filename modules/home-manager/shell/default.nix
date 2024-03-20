@@ -1,17 +1,15 @@
-{ ... }:
-
-{
+{...}: {
   # zsh
   programs.zsh = {
     # enable zsh
     enable = true;
-    
+
     # enable oh-my-zsh
     oh-my-zsh.enable = true;
-    
+
     # enable plugins
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
   };
 
   # starship
@@ -27,4 +25,3 @@
     nixos-update-flake = "nix flake update && sudo nixos-rebuild switch --flake";
   };
 }
-

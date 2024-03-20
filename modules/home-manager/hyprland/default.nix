@@ -38,6 +38,7 @@
       exec-once = [
         "hyprpaper"
         "ags"
+        "mako"
       ];
 
       env = [

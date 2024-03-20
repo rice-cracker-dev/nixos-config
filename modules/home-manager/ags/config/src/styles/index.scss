@@ -1,7 +1,10 @@
 @import '/home/khoa/.config/colorScheme/style.scss';
+@import './mpris.scss';
 
 * {
   all: unset;
+
+  transition-duration: 150ms;
 }
 
 window {
@@ -9,7 +12,7 @@ window {
   color: @base05;
 
   font-family: 'JetBrains Mono';
-  font-size: 14px;
+  font-size: 12px;
 }
 
 button,
@@ -41,8 +44,31 @@ button.active {
 
 button.icon {
   padding: 0px;
-  min-height: 28px;
-  min-width: 28px;
+  min-height: 24px;
+  min-width: 24px;
+}
+
+button.workspace {
+  background-color: alpha(@base05, 0.5);
+
+  padding: 0px;
+  border-radius: 5px;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+button.workspace:hover {
+  background-color: @base05;
+}
+
+button.workspace.active {
+  background-color: @base0E;
+
+  min-width: 16px;
+}
+
+button.workspace.active:hover {
+  background-color: shade(@base0E, 1.1);
 }
 
 scale trough,
@@ -69,16 +95,19 @@ entry.card {
   background-color: @base00;
   border: 1px solid alpha(@base05, 0.25);
 
-  padding: 8px;
+  padding: 4px;
   border-radius: 4px;
 }
 
 .card {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid alpha(@base05, 0.25);
-
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   padding: 4px;
+}
+
+.card.outline {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@base05, 0.25);
 }
 
 .card.lg {
@@ -93,7 +122,7 @@ entry.card {
   background: rgba(255, 255, 255, 0.1);
   border: none;
 
-  padding: 8px;
+  padding: 4px;
 }
 
 .nerdfont {

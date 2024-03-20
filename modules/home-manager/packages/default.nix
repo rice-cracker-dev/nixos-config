@@ -1,26 +1,30 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # desktop utilities
-    cinnamon.nemo-with-extensions
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xarchiver
+    gparted
 
     # desktop apps
     bitwarden
     thunderbird
-    vivaldi
-    vivaldi-ffmpeg-codecs
+    floorp
     vesktop
-    # anydesk # remote access
     sunshine
 
     # development tools
     vscode
-    jetbrains.webstorm
+    jetbrains-toolbox
     putty
+    # redisinsight
 
     # compilers and runtimes
     nodejs
     node2nix
     nodePackages.pnpm
+    nodePackages.yarn
     bun
   ];
 }

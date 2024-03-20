@@ -11,6 +11,12 @@
     ags.url = "github:Aylur/ags";
     neovim-flake.url = "github:notashelf/neovim-flake";
     spicetify.url = "github:the-argus/spicetify-nix";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";

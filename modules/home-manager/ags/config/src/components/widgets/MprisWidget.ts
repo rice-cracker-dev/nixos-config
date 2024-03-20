@@ -5,44 +5,8 @@ import MprisPopover from "./popovers/MprisPopover";
 
 const mpris = await Service.import('mpris');
 
-export const supportedName: { [s: string]: { icon: string; color: string } } = {
-  spotify: { icon: '', color: '#1ED760' },
-};
-
-
-const MprisInstanceWidget = (player: MprisPlayer) => {
-  const mprisPopover = MprisPopover();
-  
-  return Widget.Button({
-    onClicked: (self) => {
-      mprisPopover.set_relative_to(self);
-      mprisPopover.set_position(3);
-      // mprisPopover.popup();
-    },
-
-    child: Widget.Box({
-      spacing: 8,
-      children: [
-        NerdFontLabel({ vpack: 'center' }).hook(player, (self) => {
-          const supported = supportedName[player.name];
-          self.visible = !!supported;
-
-          if (supported) {
-            self.css = `font-size: 16px; color: ${supported.color}`;
-            self.label = supported.icon;
-          }
-        }),
-
-        Widget.Box({
-          vertical: true,
-          vpack: 'center',
-          children: [
-            Widget.Label({ css: 'font-weight: 700' }).bind('label', player, 'track_title'),
-          ],
-        }),
-      ],
-    }),
-  });
+export const supportedName: { [s: string]: { icon: string; } } = {
+  spotify: { icon: '' },
 };
 
 const MprisWidget = () => Widget.Box({ className: 'card' })
@@ -55,7 +19,31 @@ const MprisWidget = () => Widget.Box({ className: 'card' })
       return;
     }
 
-    self.child = MprisInstanceWidget(player);
+    self.class_name = `card mpris-${player.name}`
+    self.child = Widget.Button({
+
+      child: Widget.Box({
+        spacing: 8,
+        children: [
+          NerdFontLabel({ vpack: 'center' }).hook(player, (self) => {
+            const supported = supportedName[player.name];
+            self.visible = !!supported;
+
+            if (supported) {
+              self.label = supported.icon;
+            }
+          }),
+
+          Widget.Box({
+            vertical: true,
+            vpack: 'center',
+            children: [
+              Widget.Label({ css: 'font-weight: 700' }).bind('label', player, 'track_title'),
+            ],
+          }),
+        ],
+      }),
+    });
   });
 
 export default MprisWidget;

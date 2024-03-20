@@ -8,21 +8,22 @@ import MprisWidget from "src/components/widgets/MprisWidget";
 
 export const windowName = 'ags-mainbar';
 
-const MainBarWindow = () => Widget.Window({
+const MainBarWindow = (vertical = false) => Widget.Window({
   name: windowName,
-  anchor: ['top', 'left', 'right'],
+  anchor: vertical ? ['top', 'bottom', 'right'] : ['top', 'left', 'right'],
   exclusivity: 'exclusive',
-  margins: [8, 8, 0, 8],
+  margins: vertical ? [8, 8, 8, 0] : [8, 8, 0, 8],
   child: Widget.Box({
-    vertical: false,
-    spacing: 8,
+    className: 'card outline',
+    vertical,
+    spacing: 4,
     children: [
-      HyprlandWorkspaceWidget(),
+      HyprlandWorkspaceWidget(vertical),
       Spacer(),
-      SystemTrayWidget(),
+      SystemTrayWidget(vertical),
       MprisWidget(),
-      StatusWidget(),
-      TimeWidget(),
+      StatusWidget(vertical),
+      TimeWidget(vertical),
       HomeWidget(),
     ],
   }),
