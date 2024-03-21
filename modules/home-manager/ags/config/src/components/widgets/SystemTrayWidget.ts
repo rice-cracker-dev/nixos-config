@@ -13,7 +13,7 @@ const SystemTrayWidgetItem = (item: TrayItem) => {
 
 const SystemTrayWidget = (vertical = false) => Widget.Box({
   vertical,
-  className: 'card',
+  className: 'card outline',
   visible: systemTray.bind('items').as(i => i.length > 0),
   child: Widget.Box({ spacing: 4 }).bind(
     'children',

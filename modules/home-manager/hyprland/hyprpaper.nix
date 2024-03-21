@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  wallpaper = ./wallpaper.jpg;
+  wallpaper = ./wallpaper.png;
   wallpaperPath = "${config.home.homeDirectory}/.local/share/hyprpaper/${builtins.baseNameOf wallpaper}";
 in {
   # install hyprpaper

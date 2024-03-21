@@ -23,7 +23,7 @@ const timePoll = Variable<Date>(new Date(), {
 
 const TimeWidget = (vertical = false) => Widget.Box({
   vertical,
-  className: 'card lg',
+  className: 'card outline lg',
   spacing: 8,
   children: [
     NerdFontLabel({ label: '󰥔', css: 'color: @base0E' }),

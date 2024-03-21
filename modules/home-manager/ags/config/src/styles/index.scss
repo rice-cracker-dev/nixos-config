@@ -1,5 +1,4 @@
 @import '/home/khoa/.config/colorScheme/style.scss';
-@import './mpris.scss';
 
 * {
   all: unset;
@@ -37,9 +36,21 @@ menuitem:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+button.solid {
+  background-color: @base00;
+}
+
+button.solid:hover {
+  background-color: shade(@base00, 1.1);
+}
+
 button.active {
   background-color: @base0E;
   color: @base00;
+}
+
+button.active:hover {
+  background-color: shade(@base0E, 1.1);
 }
 
 button.icon {
@@ -55,6 +66,10 @@ button.workspace {
   border-radius: 5px;
   min-width: 8px;
   min-height: 8px;
+}
+
+button.workspace.has-app {
+  background-color: alpha(@base05, 0.75);
 }
 
 button.workspace:hover {
@@ -99,6 +114,15 @@ entry.card {
   border-radius: 4px;
 }
 
+.text-heading {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.text-bodt {
+  opacity: 0.75;
+}
+
 .card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
@@ -106,7 +130,7 @@ entry.card {
 }
 
 .card.outline {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid alpha(@base05, 0.25);
 }
 
@@ -125,6 +149,8 @@ entry.card {
   padding: 4px;
 }
 
+@import './mpris.scss';
+
 .nerdfont {
   font-family: 'Symbols Nerd Font';
 }
@@ -134,6 +160,15 @@ entry.card {
   min-height: 100px;
   background-size: cover;
   background-position: center;
+  border-radius: 4px;
+}
+
+.img-notification {
+  min-width: 64px;
+  min-height: 64px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 4px;
 }
 

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{...}: {
   # sddm
   services.xserver.displayManager.sddm = {
     # enable sddm
@@ -12,5 +10,4 @@
     # theme
     # theme = "${import ./catppuccin.nix { inherit pkgs; }}";
   };
-} 
-
+}

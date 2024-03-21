@@ -12,6 +12,7 @@
     thunderbird
     floorp
     vesktop
+    obs-studio
     sunshine
 
     # development tools

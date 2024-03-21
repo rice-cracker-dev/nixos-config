@@ -1,7 +1,7 @@
 import { NerdFontLabel } from "../NerdFontLabel";
 
 const HomeWidget = () => Widget.Box({
-  className: 'card',
+  className: 'card outline',
   child: Widget.Button({
     className: 'icon',
     child: NerdFontLabel({

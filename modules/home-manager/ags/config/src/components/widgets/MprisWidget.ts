@@ -1,7 +1,6 @@
-import { MprisPlayer } from "types/service/mpris";
+import Box from "types/widgets/box";
 import { NerdFontLabel } from "../NerdFontLabel";
 import Gtk from "types/@girs/gtk-3.0/gtk-3.0";
-import MprisPopover from "./popovers/MprisPopover";
 
 const mpris = await Service.import('mpris');
 
@@ -9,8 +8,10 @@ export const supportedName: { [s: string]: { icon: string; } } = {
   spotify: { icon: '' },
 };
 
-const MprisWidget = () => Widget.Box({ className: 'card' })
-  .hook(mpris, (self) => {
+const MprisWidget = () => {
+  let previousBusName = '';
+
+  const onPlayerAddedRemoved = (self: Box<Gtk.Widget, unknown>) => {
     // prioritize spotify
     const player = mpris.players.find((o) => o.name === 'spotify') ?? mpris.players[0];
 
@@ -19,13 +20,23 @@ const MprisWidget = () => Widget.Box({ className: 'card' })
       return;
     }
 
-    self.class_name = `card mpris-${player.name}`
+    if (previousBusName === player.bus_name) {
+      print('same player, skipping...');
+      return;
+    }
+
+    previousBusName = player.bus_name;
+
+    self.class_name = `card outline mpris-${player.name}`
     self.child = Widget.Button({
 
       child: Widget.Box({
         spacing: 8,
         children: [
-          NerdFontLabel({ vpack: 'center' }).hook(player, (self) => {
+          NerdFontLabel({
+            vpack: 'center',
+            css: 'font-size: 14px',
+          }).hook(player, (self) => {
             const supported = supportedName[player.name];
             self.visible = !!supported;
 
@@ -38,12 +49,25 @@ const MprisWidget = () => Widget.Box({ className: 'card' })
             vertical: true,
             vpack: 'center',
             children: [
-              Widget.Label({ css: 'font-weight: 700' }).bind('label', player, 'track_title'),
+              Widget.Label({
+                maxWidthChars: 24,
+                css: 'font-weight: 700'
+              }).bind('label', player, 'track_title'),
             ],
           }),
         ],
       }),
     });
-  });
+  };
+
+  return Widget.Box({
+    setup: (self) => {
+      onPlayerAddedRemoved(self);
+
+      self.hook(mpris, onPlayerAddedRemoved, 'player-added');
+      self.hook(mpris, onPlayerAddedRemoved, 'player-closed');
+    },
+  })
+};
 
 export default MprisWidget;

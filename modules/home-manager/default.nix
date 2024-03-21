@@ -13,7 +13,6 @@
     ./rofi
     ./spicetify
     ./gaming
-    ./mako
   ];
 
   # enable KDE connect

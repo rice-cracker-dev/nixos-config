@@ -14,14 +14,13 @@ const MainBarWindow = (vertical = false) => Widget.Window({
   exclusivity: 'exclusive',
   margins: vertical ? [8, 8, 8, 0] : [8, 8, 0, 8],
   child: Widget.Box({
-    className: 'card outline',
     vertical,
     spacing: 4,
     children: [
       HyprlandWorkspaceWidget(vertical),
       Spacer(),
-      SystemTrayWidget(vertical),
       MprisWidget(),
+      SystemTrayWidget(vertical),
       StatusWidget(vertical),
       TimeWidget(vertical),
       HomeWidget(),

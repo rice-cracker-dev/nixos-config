@@ -18,6 +18,6 @@ const compileStyle = () => {
 Utils.monitorFile(styleDir, () => compileStyle());
 
 App.config({
-  windows: Object.values(windows),
+  windows,
   style: compileStyle(),
 });
