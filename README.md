@@ -8,7 +8,7 @@ Run this on your first time:
 
 ```bash
 git clone https://github.com/rice-cracker-dev/nixos-config ~/nixos && cd ~/nixos
-sudo nixos-rebuild --flake ./#default
+sudo nixos-rebuild --flake ./#nixos # or . if your user is "nixos"
 ```
 
 This config provides aliases to make rebuilding NixOS simpler:
@@ -19,4 +19,3 @@ This config provides aliases to make rebuilding NixOS simpler:
 
 - [@vimjoyer](https://www.youtube.com/@vimjoyer) - For your amazing NixOS tutorials.
 - [Hyprland](https://hyprland.org) - For providing an amazing Wayland window manager.
-
