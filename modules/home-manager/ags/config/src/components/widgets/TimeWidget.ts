@@ -1,6 +1,6 @@
 import { NerdFontLabel } from "../NerdFontLabel";
 
-const formatTime = (date: Date) => {
+export const formatTime = (date: Date) => {
   /*
   const hours = date.getHours();
   const minutes = date.getMinutes();
@@ -17,9 +17,11 @@ const formatTime = (date: Date) => {
   });
 };
 
-const timePoll = Variable<Date>(new Date(), {
+export const timePoll = Variable<Date>(new Date(), {
   poll: [1000, 'date +%s', (o) => new Date(Number(o) * 1000)]
 });
+
+export const formattedTimePoll = Utils.derive([timePoll], (o) => formatTime(o));
 
 const TimeWidget = (vertical = false) => Widget.Box({
   vertical,
@@ -37,7 +39,7 @@ const TimeWidget = (vertical = false) => Widget.Box({
         ],
       })
       : Widget.Label({
-        label: timePoll.bind().as(formatTime),
+        label: formattedTimePoll.bind(),
       }),
   ],
 });

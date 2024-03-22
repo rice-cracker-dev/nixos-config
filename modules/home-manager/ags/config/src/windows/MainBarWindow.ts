@@ -5,6 +5,9 @@ import SystemTrayWidget from "src/components/widgets/SystemTrayWidget";
 import TimeWidget from "src/components/widgets/TimeWidget";
 import HomeWidget from "src/components/widgets/HomeWidget";
 import MprisWidget from "src/components/widgets/MprisWidget";
+import VolumeWidget from 'src/components/widgets/VolumeWidget';
+import BatteryWidget from 'src/components/widgets/BatteryWidget';
+import NetworkWidget from 'src/components/widgets/NetworkWidget';
 
 export const windowName = 'ags-mainbar';
 
@@ -21,7 +24,9 @@ const MainBarWindow = (vertical = false) => Widget.Window({
       Spacer(),
       MprisWidget(),
       SystemTrayWidget(vertical),
-      StatusWidget(vertical),
+      BatteryWidget(),
+      VolumeWidget(),
+      NetworkWidget(),
       TimeWidget(vertical),
       HomeWidget(),
     ],

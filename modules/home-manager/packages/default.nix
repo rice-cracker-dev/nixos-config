@@ -14,6 +14,7 @@
     vesktop
     obs-studio
     sunshine
+    inkscape
 
     # development tools
     vscode

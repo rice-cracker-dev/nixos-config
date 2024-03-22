@@ -1,12 +1,13 @@
 import MainBarWindow from './MainBarWindow';
 import ActivateLinuxWindow from './ActivateLinuxWindow';
 import NotificationWindow from './NotificationWindow';
-//import AppLauncherWindow from './AppLauncherWindow';
+import DashboardWindow from './DashboardWindow';
 
 export const windows = [
   MainBarWindow(),
   ActivateLinuxWindow(),
   NotificationWindow(),
-  //appLauncher: AppLauncherWindow(),
+  DashboardWindow()
 ];
+
 

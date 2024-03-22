@@ -110,7 +110,7 @@
       };
 
       decoration = {
-        rounding = "4";
+        rounding = "8";
 
         drop_shadow = "false";
         # shadow_range = "4";

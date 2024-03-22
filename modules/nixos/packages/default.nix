@@ -11,7 +11,8 @@
     killall
     tree
     fastfetch
-    htop
+    btop
+    jq
     inotify-tools
     libnotify
     openssl
@@ -19,6 +20,7 @@
     # gtk
     glib
     gobject-introspection
+    gtk3
     gtk4
     pkg-config
     wrapGAppsHook4
