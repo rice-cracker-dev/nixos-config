@@ -1,6 +1,5 @@
 import { HyprlandWorkspaceWidget } from "src/components/widgets/HyprlandWidget";
 import Spacer from "src/components/Spacer";
-import StatusWidget from "src/components/widgets/StatusWidget";
 import SystemTrayWidget from "src/components/widgets/SystemTrayWidget";
 import TimeWidget from "src/components/widgets/TimeWidget";
 import HomeWidget from "src/components/widgets/HomeWidget";

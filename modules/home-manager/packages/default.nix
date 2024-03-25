@@ -28,6 +28,8 @@
     nodePackages.pnpm
     nodePackages.yarn
     nodePackages.wrangler
+    nodePackages.eslint
+    nodePackages.prettier
     bun
   ];
 }

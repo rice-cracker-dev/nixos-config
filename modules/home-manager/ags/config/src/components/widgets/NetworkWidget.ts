@@ -1,6 +1,6 @@
 const network = await Service.import('network');
 
-const networkWiredIcon = 'network-wired-symbolic';
+const networkWiredIcon = 'network-wireless-symbolic';
 const networkWifiIcon = 'network-wireless-symbolic';
 const networkDisconnected = 'network-offline';
 

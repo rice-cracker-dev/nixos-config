@@ -20,7 +20,7 @@ const DashboardTimeWidget = () => {
 
   const stackProps: StackProps = {
     transition: 'slide_up',
-    transitionDuration: 500,
+    transitionDuration: 1000,
   };
 
   return Widget.Box({

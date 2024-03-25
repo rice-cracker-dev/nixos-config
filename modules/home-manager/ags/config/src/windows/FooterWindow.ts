@@ -1,21 +1,21 @@
 import DashboardDynamicWidget from 'src/components/widgets/DashboardDynamicWidget';
-import DashboardTimeWidget from 'src/components/widgets/DashboardTimeWidget';
 
-export const windowName = 'ags-window';
+export const windowName = 'ags-footer';
 
-export const DashboardWindow = () => {
+export const FooterWindow = () => {
   return Widget.Window({
+    anchor: ['bottom'],
     layer: 'background',
 
     child: Widget.Box({
+      css: 'margin: 4px',
       vertical: true,
       children: [
-        DashboardTimeWidget(),
         DashboardDynamicWidget(),
       ],
     }),
   });
 };
 
-export default DashboardWindow;
+export default FooterWindow;
 

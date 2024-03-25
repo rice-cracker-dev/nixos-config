@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../default.nix
     ./options
     ./hyprland
     ./theme

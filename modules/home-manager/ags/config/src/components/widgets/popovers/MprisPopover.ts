@@ -13,7 +13,21 @@ const lengthStr = (length: number) => {
     return `${min}:${sec0}${sec}`
 }
 
-const MprisPlayerWidget = (player: MprisPlayer) => {
+type MprisPlayerWidgetSettings = {
+  large: boolean;
+  applyMprisStyle: boolean;
+};
+
+export const MprisPlayerWidget = (
+  player: MprisPlayer,
+  settings?: Partial<MprisPlayerWidgetSettings>
+) => {
+  const { large, applyMprisStyle }: MprisPlayerWidgetSettings = {
+    large: false,
+    applyMprisStyle: true,
+    ...settings,
+  };
+
   const title = Widget.Label({
     hpack: 'start',
     marginRight: 28,
@@ -40,7 +54,9 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
       self.hook(player, update, "position")
       self.poll(1000, update)
     },
-  }).hook(player, (self) => {
+  });
+  /*
+  .hook(player, (self) => {
     const supported = supportedName[player.name];
 
     self.css = supported ? `
@@ -49,6 +65,7 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
       }
     ` : '';
   });
+  */
 
   const positionLabel = Widget.Label({
     class_name: "position",
@@ -70,8 +87,6 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
     visible: player.bind("length").transform(l => l > 0),
     label: player.bind("length").transform(lengthStr),
   });
-
-  
 
   const playPause = Widget.Button({
     class_name: "play-pause",
@@ -119,7 +134,8 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
   });
 
   const contents = Widget.Box({
-    spacing: 12,
+    spacing: large ? 24 : 12,
+    margin: large ? 16 : 8,
 
     children: [
       Widget.Box({
@@ -146,16 +162,14 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
 
   return Widget.Box({
     hexpand: true,
-    className: 'card mpris',
     child: Widget.Overlay({
       hexpand: true,
-
       child: contents,
 
       overlay: NerdFontLabel({
         hpack: 'end',
         vpack: 'start',
-        css: 'font-size: 24px; margin: 4px',
+        css: `font-size: 24px; margin: ${large ? '16px' : '4px'}`,
       }).hook(player, (self) => {
         const supported = supportedName[player.name];
         self.visible = !!supported;
@@ -166,10 +180,9 @@ const MprisPlayerWidget = (player: MprisPlayer) => {
       }),
     })
   }).hook(player, (self) => {
-    const supported = supportedName[player.name];
-    self.css = supported
-      ? `background-color: ${supported.color}; color: @base00;`
-      : ''
+    if (applyMprisStyle) {
+      self.class_name = `card outline mpris-${player.name}`
+    }
   });
 };
 
@@ -195,7 +208,7 @@ const MprisPopover = () => {
           'children',
           mpris,
           'players',
-          (o) => o.map(MprisPlayerWidget))
+          (o) => o.map((p) => MprisPlayerWidget(p)))
       ],
     }),
   });
