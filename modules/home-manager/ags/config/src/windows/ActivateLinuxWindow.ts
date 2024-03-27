@@ -5,7 +5,7 @@ const ActivateLinuxWindow = () => {
     sensitive: false,
     clickThrough: true,
     exclusivity: 'ignore',
-    layer: 'overlay',
+    layer: 'background',
     child: Widget.Box({
       vertical: true,
       spacing: 2,

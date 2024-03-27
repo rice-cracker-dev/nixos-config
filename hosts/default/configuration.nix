@@ -29,6 +29,8 @@
       "storage"
       "power"
       "libvirtd"
+      "kvm"
+      "input"
     ];
   };
 

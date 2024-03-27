@@ -29,6 +29,7 @@ const MprisWidget = () => {
 
     self.class_name = `card outline mpris-${player.name}`
     self.child = Widget.Button({
+      onClicked: player.playPause,
 
       child: Widget.Box({
         spacing: 8,

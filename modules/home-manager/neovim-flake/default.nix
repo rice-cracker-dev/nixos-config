@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.neovim-flake.homeManagerModules.default
   ];
@@ -126,6 +130,10 @@
       };
 
       vim.treesitter.context.enable = true;
+      vim.treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        qmljs
+        qmldir
+      ];
 
       vim.binds = {
         whichKey.enable = true;
@@ -151,7 +159,7 @@
       };
 
       vim.notify = {
-        nvim-notify.enable = true;
+        nvim-notify.enable = false;
       };
 
       vim.projects = {

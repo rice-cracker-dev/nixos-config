@@ -14,8 +14,20 @@
   # boot.initrd.kernelModules = ["nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset"];
   boot.blacklistedKernelModules = ["nouveau"];
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
-  boot.kernelModules = ["kvm-intel"];
+  boot.kernelModules = [
+    "kvm-intel"
+    "vfio"
+    "vfio_iommu_type1"
+    "vfio_pci"
+    "vfio_virqfd"
+  ];
   boot.extraModulePackages = [];
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6cd4423c-9c25-4ab4-bfed-fb621d9b1a18";

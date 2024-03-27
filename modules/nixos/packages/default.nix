@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./fonts.nix
+    ./fonts
   ];
 
   # system packages
@@ -11,11 +11,16 @@
     killall
     tree
     fastfetch
+    pfetch
     btop
     jq
     inotify-tools
     libnotify
+    libsixel
     openssl
+    unzip
+    unrar
+    p7zip
 
     # gtk
     glib

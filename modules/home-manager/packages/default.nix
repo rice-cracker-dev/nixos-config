@@ -15,6 +15,11 @@
     obs-studio
     sunshine
     inkscape
+    qbittorrent
+    protonvpn-gui
+    font-manager
+    gimp # eww
+    bless
 
     # development tools
     vscode

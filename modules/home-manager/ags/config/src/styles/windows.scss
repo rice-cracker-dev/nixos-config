@@ -1,0 +1,50 @@
+.taskbar {
+  background: black;
+  color: white;
+
+  min-height: 41px;
+
+  font-family: 'Segoe UI';
+}
+
+.taskbar button {
+  min-width: 48px;
+
+  border-radius: 0;
+  padding: 0;
+
+  font-family: 'Segoe UI';
+}
+
+.taskbar button.notification {
+  min-width: 42px;
+}
+
+.taskbar button.showdesktop {
+  min-width: 6px;
+
+  border-left: 1px solid;
+  border-color: #393a3e;
+
+  margin-left: 8px;
+}
+
+.taskbar button.time {
+  min-width: 0;
+
+  font-size: 12.5px;
+
+  padding: 0 6px;
+}
+
+.taskbar button.systray {
+  min-width: 0;
+
+  padding: 0 4px;
+  margin: 0 1px;
+}
+
+.mdl2 {
+  font-family: 'Segoe MDL2 Assets';
+  font-size: 16px;
+}

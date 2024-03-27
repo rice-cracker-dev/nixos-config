@@ -708,11 +708,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1711249786,
-        "narHash": "sha256-K5MByS37KyZ3+UPV/UAP6hscqiXtGQVevAA7nkGd96Y=",
+        "lastModified": 1711383630,
+        "narHash": "sha256-TtjKNgJQQc6qLnaizhymd/1KZEJoO2rvug26BqpjGLk=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "86dc46ffea2fa72abe1228c1fad1b42d1507e45d",
+        "rev": "ae17e900e720430c7848faf1b6e21b5f352c26ca",
         "type": "github"
       },
       "original": {
@@ -841,11 +841,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1711228014,
-        "narHash": "sha256-AF5i25DEYK7bLevSivoNwyLlQ55sLgTIBJaiS8WWEvU=",
+        "lastModified": 1711313012,
+        "narHash": "sha256-d0Shu3dqdJj9QKR3dnE4Mh8t66hUlfLGZl+9A9JsoI8=",
         "owner": "hyprwm",
         "repo": "hyprlock",
-        "rev": "2448774de3532e8fdc65b329831ff37208e20f38",
+        "rev": "87fce7923fef1143b3a473abb2fc873e67664475",
         "type": "github"
       },
       "original": {
@@ -2095,6 +2095,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1711024375,
+        "narHash": "sha256-l10c8cvYlZepcMApXQbOu2f8IaFd47cOgWTGs3Eb+b4=",
+        "ref": "refs/heads/master",
+        "rev": "4eb5dc559342677d2e45a98c4e4db9c1c85c6757",
+        "revCount": 127,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
     "registers": {
       "flake": false,
       "locked": {
@@ -2143,6 +2163,7 @@
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_12",
+        "quickshell": "quickshell",
         "spicetify": "spicetify"
       }
     },

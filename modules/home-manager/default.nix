@@ -14,6 +14,8 @@
     ./rofi
     ./spicetify
     ./gaming
+    ./fastfetch
+    ./quickshell
   ];
 
   # enable KDE connect

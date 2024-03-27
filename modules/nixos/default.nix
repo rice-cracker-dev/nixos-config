@@ -16,6 +16,7 @@
     ./ssh
     ./plasma
     ./gaming
+    ./virt-manager
   ];
 
   nix = {
@@ -39,4 +40,7 @@
   services.gvfs.enable = true;
   services.flatpak.enable = true;
   services.uptimed.enable = true;
+
+  # enable dconf
+  programs.dconf.enable = true;
 }
