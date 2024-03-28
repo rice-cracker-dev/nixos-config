@@ -20,6 +20,7 @@
     font-manager
     gimp # eww
     bless
+    tigervnc
 
     # development tools
     vscode

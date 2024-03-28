@@ -17,6 +17,7 @@
     ./plasma
     ./gaming
     ./virt-manager
+    ./firewall
   ];
 
   nix = {

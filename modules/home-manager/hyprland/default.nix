@@ -193,7 +193,7 @@
         "$mainMod SHIFT, c, exec, hyprpicker -a"
 
         # obs studio pass
-        "$mainMod, F6, pass, ^(com\.obsproject\.Studio)$"
+        "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
       ];
 
       bindm = [

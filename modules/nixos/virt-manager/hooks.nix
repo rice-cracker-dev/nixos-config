@@ -24,8 +24,9 @@
 
           if [ "$OPERATION" == "prepare" ]; then
             systemctl stop display-manager.service
-            sudo modprobe -r -a nvidia_drm nvidia_uvm nvidia_modeset nvidia
+            modprobe -r -a nvidia_drm nvidia_uvm nvidia_modeset nvidia
             virsh nodedev-detach pci_0000_01_00_0
+            modprobe vfio-pci
           fi
 
           if [ "$OPERATION" == "release" ]; then
