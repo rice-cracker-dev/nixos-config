@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./starship
+    ./zoxide
+    ./zsh
+  ];
+}

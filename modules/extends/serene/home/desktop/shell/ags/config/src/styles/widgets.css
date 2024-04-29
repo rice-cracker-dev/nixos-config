@@ -1,0 +1,64 @@
+.btn,
+.btn.btn-transparent:hover {
+  background-color: @base00;
+  border-color: shade(@base00, 1.1) shade(@base00, 0.25) shade(@base00, 0.25)
+    shade(@base00, 1.1);
+  border-style: outset;
+  border-width: 2px;
+
+  padding: 2px 4px;
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn:active,
+.btn:hover:active,
+.btn-active {
+  background-color: shade(@base00, 0.9);
+  border-color: shade(@base00, 0.25) shade(@base00, 1.1) shade(@base00, 1.1)
+    shade(@base00, 0.25);
+  border-style: inset;
+
+  font-weight: bold;
+}
+
+.btn-icon {
+  padding: 2px;
+}
+
+.card {
+  background-color: shade(@base00, 0.9);
+  border-color: shade(@base00, 0.25) shade(@base00, 1.1) shade(@base00, 1.1)
+    shade(@base00, 0.25);
+  border-width: 2px;
+  border-style: inset;
+
+  padding: 2px;
+}
+
+.menu,
+menu {
+  background-color: @base00;
+  border-color: shade(@base00, 1.1) shade(@base00, 0.25) shade(@base00, 0.25)
+    shade(@base00, 1.1);
+  border-style: outset;
+  border-width: 2px;
+
+  padding: 4px 2px;
+}
+
+.menuitem,
+menuitem {
+  background-color: transparent;
+
+  padding: 2px 8px;
+}
+
+.menuitem:hover,
+menuitem:hover {
+  background-color: @accent;
+  color: @base00;
+}

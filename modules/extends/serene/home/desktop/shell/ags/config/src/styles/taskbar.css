@@ -1,0 +1,9 @@
+.taskbar {
+  background-color: @base00;
+  border-color: shade(@base00, 2);
+  border-width: 2px 0 0 0;
+  border-style: inset;
+  color: @base05;
+
+  padding: 2px;
+}

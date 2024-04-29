@@ -1,0 +1,14 @@
+@import "/home/khoa/.config/schemes/style.css";
+@import "./taskbar.css";
+@import "./widgets.css";
+
+* {
+  all: unset;
+}
+
+window {
+  background: transparent;
+  color: @base05;
+
+  font-family: "Noto Sans", sans-serif;
+}
