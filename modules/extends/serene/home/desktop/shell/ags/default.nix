@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     libdbusmenu-gtk3
+    cava
   ];
 
   programs.ags = {
