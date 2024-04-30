@@ -14,7 +14,7 @@ const ClientWidget = (client: Client) => {
   return Widget.Button({
     width_request: 196,
     vexpand: true,
-    css: 'min-width: 96px; max-width: 96px;',
+    css: 'min-width: 96px;',
     child: Widget.Box({
       vexpand: true,
       spacing: 4,

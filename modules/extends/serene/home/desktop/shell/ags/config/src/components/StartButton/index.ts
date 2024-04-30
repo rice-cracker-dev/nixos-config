@@ -1,8 +1,10 @@
+import { isOpen } from "src/windows/StartMenuWindow/index";
 import Image from "../Image/index";
 
 const StartButton = () => {
   return Widget.Button({
-    class_name: 'btn',
+    on_primary_click: () => isOpen.setValue(!isOpen.value),
+
     child: Widget.Box({
       spacing: 4,
       children: [
@@ -18,6 +20,12 @@ const StartButton = () => {
         }),
       ],
     }),
+  }).hook(isOpen, (self) => {
+    self.class_names = ['btn'];
+
+    if (isOpen.value) {
+      self.class_names = [...self.class_names, 'btn-active'];
+    }
   });
 };
 

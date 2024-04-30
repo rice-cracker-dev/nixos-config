@@ -1,6 +1,6 @@
 {inputs, ...}: {
   services.hyprpaper = let
-    wallpaperDir = "${inputs.self}/modules/extends/serene/home/desktop/hyprland/wallpapers";
+    wallpaperDir = "${inputs.self}/modules/extends/serene/home/desktop/wm/hyprland/wallpapers";
   in {
     enable = true;
 

@@ -20,7 +20,7 @@
   ];
 
   # Enable CUDA
-  nixpkgs.config.cudaSupport = true;
+  # nixpkgs.config.cudaSupport = true;
 
   # Enable OpenGL
   hardware.opengl = {
@@ -33,8 +33,6 @@
       intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
-      rocm-opencl-icd
-      rocm-opencl-runtime
     ];
   };
 

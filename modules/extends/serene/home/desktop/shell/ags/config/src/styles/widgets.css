@@ -21,14 +21,13 @@
   border-color: shade(@base00, 0.25) shade(@base00, 1.1) shade(@base00, 1.1)
     shade(@base00, 0.25);
   border-style: inset;
-
-  font-weight: bold;
 }
 
 .btn-icon {
   padding: 2px;
 }
 
+.entry,
 .card {
   background-color: shade(@base00, 0.9);
   border-color: shade(@base00, 0.25) shade(@base00, 1.1) shade(@base00, 1.1)
@@ -37,6 +36,14 @@
   border-style: inset;
 
   padding: 2px;
+}
+
+.card-outset {
+  background-color: @base00;
+  border-color: shade(@base00, 1.1) shade(@base00, 0.25) shade(@base00, 0.25)
+    shade(@base00, 1.1);
+  border-style: outset;
+  border-width: 2px;
 }
 
 .card-wide {
@@ -61,6 +68,7 @@ menuitem {
   padding: 2px 8px;
 }
 
+.menuitem-active,
 .menuitem:hover,
 menuitem:hover {
   background-color: @accent;

@@ -23,7 +23,7 @@
       "$terminal" = "${lib.getExe config.programs.kitty.package}";
       "$editor" = "${lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${lib.getExe pkgs.floorp}";
-      "$launcher" = "${lib.getExe config.programs.rofi.package} -show drun";
+      "$launcher" = "ags -r 'toggleStartMenu()'";
       "$fileManager" = "${lib.getExe pkgs.cinnamon.nemo-with-extensions}";
 
       env = [
@@ -85,10 +85,6 @@
         follow_mouse = "0";
       };
 
-      # device = {
-      #   "elan1300:00-04f3:3057-touchpad".enabled = "false";
-      # };
-
       general = {
         gaps_in = "4";
         gaps_out = "8";
@@ -116,10 +112,10 @@
         };
       };
 
-      device = {
-        name = "elan1300:00-04f3:3057-touchpad";
-        enabled = false;
-      };
+      #device = {
+      #  name = "elan1300:00-04f3:3057-touchpad";
+      #  enabled = false;
+      #};
 
       bind = [
         # apps

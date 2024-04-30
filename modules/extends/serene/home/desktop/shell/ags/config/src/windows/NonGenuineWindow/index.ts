@@ -5,6 +5,7 @@ const version = Variable('', {
 
 const NonGenuineWindow = () => {
   return Widget.Window({
+    name: 'ags-non-geniune',
     layer: 'background',
     anchor: ['bottom', 'right'],
 
