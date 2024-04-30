@@ -1,6 +1,7 @@
 {
   imports = [
-    ./hyprland
+    ./apps
     ./shell
+    ./wm
   ];
 }

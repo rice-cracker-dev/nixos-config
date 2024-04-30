@@ -1,9 +1,16 @@
-import type { Client } from "types/service/hyprland";
+import type { Client } from 'types/service/hyprland';
 
 const hyprland = await Service.import('hyprland');
-const applications = await Service.import("applications")
+const applications = await Service.import('applications')
+
+const tryQueryIconFromClient = (client: Client) => {
+  return applications.query(client.class)?.at(0)?.icon_name
+    ?? applications.query(client.initialTitle)?.at(0)?.icon_name;
+};
 
 const ClientWidget = (client: Client) => {
+  const icon = tryQueryIconFromClient(client);
+
   return Widget.Button({
     width_request: 196,
     vexpand: true,
@@ -14,7 +21,8 @@ const ClientWidget = (client: Client) => {
       children: [
         Widget.Icon({
           size: 16,
-          icon: applications.query(client.class)?.at(0)?.icon_name ?? '',
+          icon: icon ?? 'dialog-information-symbolic',
+          visible: !!icon,
           vpack: 'center',
         }),
         Widget.Label({

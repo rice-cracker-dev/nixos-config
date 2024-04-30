@@ -39,6 +39,10 @@
   padding: 2px;
 }
 
+.card-wide {
+  padding: 2px 4px;
+}
+
 .menu,
 menu {
   background-color: @base00;
@@ -61,4 +65,12 @@ menuitem {
 menuitem:hover {
   background-color: @accent;
   color: @base00;
+}
+
+.cava-bar {
+  background-color: @base0F;
+}
+
+.nerdfont {
+  font-family: "Symbols Nerd Font";
 }

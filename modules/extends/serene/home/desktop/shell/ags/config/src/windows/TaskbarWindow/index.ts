@@ -1,6 +1,7 @@
 import StartButton from 'src/components/StartButton/index';
 import SystemWidget from 'src/widgets/SystemWidget/index';
 import HyprlandWidget from 'src/widgets/HyprlandWidget/index';
+import MprisWidget from 'src/widgets/MprisWidget/index';
 
 const TaskbarWindow = () => {
   return Widget.Window({
@@ -14,6 +15,7 @@ const TaskbarWindow = () => {
       children: [
         StartButton(),
         HyprlandWidget(),
+        MprisWidget(),
         SystemWidget(),
       ],
     }),

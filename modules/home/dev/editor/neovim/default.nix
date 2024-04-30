@@ -141,7 +141,7 @@
       vim.git = {
         enable = true;
         gitsigns.enable = true;
-        gitsigns.codeActions = false; # throws an annoying debug message
+        gitsigns.codeActions.enable = false; # throws an annoying debug message
       };
 
       vim.minimap = {

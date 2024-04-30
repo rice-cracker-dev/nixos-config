@@ -2,7 +2,7 @@
   description = "rice-cracker-dev's personal flakes";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,6 +21,9 @@
 
     # aylur gtk shell
     ags.url = "github:Aylur/ags";
+
+    # spicetify
+    spicetify.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = {
