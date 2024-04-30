@@ -166,7 +166,7 @@
         "$mainMod, mouse_up, workspace, e-1"
 
         # obs studio pass
-        # "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
+        "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
 
         # screenshotting
         ", PRINT, exec, grimblast copysave screen"
