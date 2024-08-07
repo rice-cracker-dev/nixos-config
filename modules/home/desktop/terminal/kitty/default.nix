@@ -3,7 +3,8 @@
     enable = true;
 
     settings = {
-      background_opacity = "0.9";
+      font_family = "JetBrainsMono Nerd Font";
+
       foreground = "#${config.colorScheme.palette.base05}";
       selection_background = "#${config.colorScheme.palette.base05}";
       selection_foreground = "#${config.colorScheme.palette.base00}";

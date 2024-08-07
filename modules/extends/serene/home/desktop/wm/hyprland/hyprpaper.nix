@@ -1,15 +1,19 @@
-{inputs, ...}: {
+{
   services.hyprpaper = let
-    wallpaperDir = "${inputs.self}/modules/extends/serene/home/desktop/wm/hyprland/wallpapers";
+    wallpaperDir = ./wallpapers;
   in {
     enable = true;
 
-    preloads = [
-      "${wallpaperDir}/hypr95.png"
-    ];
+    settings = {
+      splash = "false";
 
-    wallpapers = [
-      ",${wallpaperDir}/hypr95.png"
-    ];
+      preload = [
+        "${wallpaperDir}/hypr95.png"
+      ];
+
+      wallpaper = [
+        ",${wallpaperDir}/hypr95.png"
+      ];
+    };
   };
 }

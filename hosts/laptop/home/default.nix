@@ -5,7 +5,8 @@
 }: {
   imports = [
     "${inputs.self}/modules/home"
-    "${inputs.self}/modules/extends/serene/home"
+    "${inputs.self}/modules/extends/candy/home"
+    ./modules
   ];
 
   home = {

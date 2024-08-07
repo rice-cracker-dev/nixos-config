@@ -16,11 +16,15 @@
     neovim-flake.url = "github:NotAShelf/neovim-flake";
 
     # hyprwm
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprpaper.url = "github:hyprwm/hyprpaper";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     # aylur gtk shell
     ags.url = "github:Aylur/ags";
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # spicetify
     spicetify.url = "github:the-argus/spicetify-nix";

@@ -1,3 +1,3 @@
 {
-  imports = [./floorp];
+  imports = [./brave ./floorp ./ungoogled-chrome];
 }

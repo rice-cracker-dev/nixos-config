@@ -7,11 +7,11 @@
 }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ./hyprpaper.nix
   ];
 
   home.packages = with pkgs; [
     wl-clipboard
+    brightnessctl
   ];
 
   wayland.windowManager.hyprland = {
@@ -22,9 +22,8 @@
       "$mainMod" = "SUPER";
       "$terminal" = "${lib.getExe config.programs.kitty.package}";
       "$editor" = "${lib.getExe pkgs.neovim-unwrapped}";
-      "$browser" = "${lib.getExe pkgs.floorp}";
-      "$launcher" = "ags -r 'toggleStartMenu()'";
-      "$fileManager" = "${lib.getExe pkgs.cinnamon.nemo-with-extensions}";
+      # "$browser" = "${lib.getExe pkgs.floorp}";
+      "$fileManager" = "${lib.getExe pkgs.kdePackages.dolphin}";
 
       env = [
         # use igpu for hyprland
@@ -70,10 +69,12 @@
         # ags
         "blur, ags-*"
         "ignorezero, ags-*"
+        "xray, ags-*"
 
         # sexshell
-        "blur, quickshell"
-        "ignorezero, quickshell"
+        "blur, qs-blur-*"
+        "ignorezero, qs-blur-*"
+        "xray, qs-blur-*"
       ];
 
       monitor = ",preferred,auto,1";
@@ -87,15 +88,17 @@
 
       general = {
         gaps_in = "4";
-        gaps_out = "8";
-
-        no_cursor_warps = "true";
+        gaps_out = "4";
 
         layout = "dwindle";
       };
 
+      cursor = {
+        no_warps = "true";
+      };
+
       decoration = {
-        rounding = "8";
+        rounding = "4";
 
         drop_shadow = "false";
         # shadow_range = "4";
@@ -107,8 +110,11 @@
         blur = {
           enabled = "true";
           size = "8";
-          passes = "4";
+          passes = "3";
           popups = "true";
+          # too goofy looking
+          # noise = "0.05";
+          # contrast = "2";
         };
       };
 
@@ -132,6 +138,9 @@
 
         # close hyprland session
         "$mainMod, m, exit"
+
+        # pin window
+        "$mainMod, p, pin, active"
 
         # move focus
         "$mainMod, left, movefocus, l"
@@ -185,7 +194,7 @@
         # pipewire volume control
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMute, exec, Depcrecate use of __empty to define empty tables in lua. Empty attrset are no longer filtered and thus should be used instead.wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
         # brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"

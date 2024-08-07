@@ -3,6 +3,7 @@
     ./direnv
     ./editor
     ./git
+    ./ide
     ./shell
   ];
 
@@ -12,5 +13,6 @@
     wget
     inotify-tools
     btop
+    tree
   ];
 }

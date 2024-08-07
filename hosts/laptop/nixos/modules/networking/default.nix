@@ -1,5 +1,6 @@
-_: {
+{
   networking.hostName = "khoa-laptop";
-  networking.wireless.enable = true;
+  networking.networkmanager.enable = true;
   networking.firewall.enable = false;
+  networking.wireguard.enable = true;
 }

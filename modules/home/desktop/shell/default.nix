@@ -1,3 +1,6 @@
 {
-  imports = [./ags];
+  imports = [
+    ./ags
+    ./quickshell
+  ];
 }

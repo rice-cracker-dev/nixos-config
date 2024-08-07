@@ -89,10 +89,10 @@
 
         indentBlankline = {
           enable = true;
-          fillChar = null;
-          eolChar = null;
-          scope = {
-            enabled = true;
+          setupOpts = {
+            scope = {
+              enabled = true;
+            };
           };
         };
 
@@ -202,10 +202,10 @@
           enable = true;
           columnAt.languages = {
             # this is a freeform module, it's `buftype = int;` for configuring column position
-            nix = 110;
-            ruby = 120;
-            java = 130;
-            go = [90 130];
+            nix = "110";
+            ruby = "120";
+            java = "130";
+            go = ["90" "130"];
           };
         };
       };

@@ -12,7 +12,7 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "storage" "power" "input"];
+    extraGroups = ["wheel" "networkmanager" "storage" "power" "input" "docker"];
   };
 
   programs.mtr.enable = true;

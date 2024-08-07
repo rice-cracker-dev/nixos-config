@@ -16,6 +16,12 @@
   };
 
   config = {
+    home.packages = [
+      pkgs.qt5ct
+      pkgs.qt6ct
+      pkgs.nwg-look
+    ];
+
     gtk = {
       enable = true;
 
@@ -27,8 +33,7 @@
 
     qt = {
       enable = true;
-
-      platformTheme.name = "gtk";
+      platformTheme.name = "qtct";
     };
   };
 }
