@@ -3,6 +3,7 @@
     ./apps
     ./archiver
     ./browser
+    ./dm
     ./fastfetch
     ./filemanager
     ./games
@@ -11,5 +12,6 @@
     ./shell
     ./terminal
     ./wm
+    ./xdg
   ];
 }

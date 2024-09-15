@@ -1,0 +1,8 @@
+@use 'text';
+@use 'card';
+@use 'button';
+
+* {
+  all: unset;
+  transition-duration: 150ms;
+}

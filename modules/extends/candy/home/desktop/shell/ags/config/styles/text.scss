@@ -1,0 +1,8 @@
+@use "palette" as p;
+
+@each $n, $c in p.$colors {
+  .text-#{$n} {
+    color: $c;
+  }
+}
+

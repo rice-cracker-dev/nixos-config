@@ -14,5 +14,7 @@
     inotify-tools
     btop
     tree
+    # postman
+    bruno
   ];
 }

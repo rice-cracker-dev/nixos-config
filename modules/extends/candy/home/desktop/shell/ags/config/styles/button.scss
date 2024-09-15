@@ -1,0 +1,47 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'palette' as palette;
+
+.btn {
+  border-radius: 4px;
+  padding: 2px 4px;
+
+  @each $name, $color in palette.$colors {
+    &.btn-#{$name} {
+      $text-color: map.get(palette.$colors, 'surface-100') !default;
+      $lightness: 5% !default;
+
+      @if (str-index($string: $name, $substring: 'surface')) {
+        $text-color: map.get(palette.$colors, 'text');
+      }
+
+      @if color.lightness($color) > 50% {
+        $lightness: -5%;
+      }
+
+      background-color: $color;
+      color: $text-color;
+
+      &:hover {
+        background-color: color.adjust($color, $lightness: $lightness);
+      }
+
+      &:active {
+        background-color: color.adjust($color, $lightness: $lightness);
+      }
+    }
+  }
+
+  &.btn-ghost {
+    background-color: transparent;
+    color: map.get(palette.$colors, 'text');
+
+    &:hover {
+      background-color: rgba(#ffffff, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(#ffffff, 0.1);
+    }
+  }
+}

@@ -14,5 +14,6 @@
     krita
     figma-linux
     electrum
+    gparted
   ];
 }

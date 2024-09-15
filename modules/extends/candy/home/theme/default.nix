@@ -5,5 +5,5 @@
     ./qt.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 }

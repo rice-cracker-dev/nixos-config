@@ -12,7 +12,7 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "storage" "power" "input" "docker"];
+    extraGroups = ["wheel" "networkmanager" "storage" "power" "input" "docker" "libvirtd"];
   };
 
   programs.mtr.enable = true;

@@ -18,9 +18,17 @@
     # hyprwm
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    # aylur gtk shell
-    ags.url = "github:Aylur/ags";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
+    # aylur gtk shell
+    ags.url = "github:Aylur/ags/v2";
+    astal.url = "github:Aylur/astal";
+
+    # quickshell
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +36,12 @@
 
     # spicetify
     spicetify.url = "github:the-argus/spicetify-nix";
+
+    # secrets manager
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

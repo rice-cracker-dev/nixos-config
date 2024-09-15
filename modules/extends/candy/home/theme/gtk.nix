@@ -6,8 +6,11 @@
     };
 
     theme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
+      name = "catppuccin-mocha-mauve-standard";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["mauve"];
+        variant = "mocha";
+      };
     };
   };
 }

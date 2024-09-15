@@ -1,9 +1,3 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.ags.homeManagerModules.default];
-
-  home.packages = [pkgs.bun];
 }

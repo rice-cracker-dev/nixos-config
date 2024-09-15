@@ -40,12 +40,12 @@
       wheel_scroll_lines=3
     '';
   in {
+    "qt6ct/qt6ct.conf".text = qtctConf;
+    "qt5ct/qt5ct.conf".text = qtctConf;
+
     "kdeglobals".source = "${pkgs.catppuccin-kde.override {
       flavour = ["macchiato"];
       accents = ["mauve"];
     }}/share/color-schemes/CatppuccinMacchiatoMauve.colors";
-
-    "qt6ct/qt6ct.conf".text = qtctConf;
-    "qt5ct/qt5ct.conf".text = qtctConf;
   };
 }

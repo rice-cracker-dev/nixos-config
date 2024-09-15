@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  lib,
   config,
   ...
 }: {
@@ -20,10 +19,10 @@
     settings = {
       # default variables
       "$mainMod" = "SUPER";
-      "$terminal" = "${lib.getExe config.programs.kitty.package}";
-      "$editor" = "${lib.getExe pkgs.neovim-unwrapped}";
+      "$terminal" = "${config.programs.kitty.package}/bin/kitty";
+      "$editor" = "${pkgs.neovim-unwrapped}/bin/nvim";
       # "$browser" = "${lib.getExe pkgs.floorp}";
-      "$fileManager" = "${lib.getExe pkgs.kdePackages.dolphin}";
+      "$fileManager" = "${pkgs.kdePackages.dolphin}/bin/dolphin";
 
       env = [
         # use igpu for hyprland
@@ -67,6 +66,9 @@
         "ignorezero, rofi"
 
         # ags
+        "blur, gtk-layer-shell"
+        "ignorealpha 0.5, gtk-layer-shel"
+        "xray, gtk=layer-shell"
         "blur, ags-*"
         "ignorezero, ags-*"
         "xray, ags-*"
@@ -118,10 +120,20 @@
         };
       };
 
-      #device = {
-      #  name = "elan1300:00-04f3:3057-touchpad";
-      #  enabled = false;
-      #};
+      bezier = [
+        "quintOut, 0.22, 1, 0.36, 1"
+      ];
+
+      animation = let
+        anim = "1, 3, quintOut";
+      in [
+        "windows, ${anim}"
+        "layers, ${anim}"
+        "fade, ${anim}"
+        "border, ${anim}"
+        "borderangle, ${anim}"
+        "workspaces, ${anim}"
+      ];
 
       bind = [
         # apps
@@ -192,9 +204,9 @@
 
       binde = [
         # pipewire volume control
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioMute, exec, Depcrecate use of __empty to define empty tables in lua. Empty attrset are no longer filtered and thus should be used instead.wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
         # brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
