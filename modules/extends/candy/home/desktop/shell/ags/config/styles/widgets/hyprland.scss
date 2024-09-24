@@ -1,0 +1,36 @@
+@use '../palette.scss' as p;
+
+.hyprland__workspace {
+  $background: map-get(p.$colors, 'text');
+  $active-background: map-get(p.$colors, 'primary');
+  $size: 10px;
+
+  background-color: rgba($background, 0.25);
+
+  border-radius: calc($size / 2);
+
+  min-width: $size;
+  min-height: $size;
+
+  &:hover {
+    background-color: rgba($background, 0.5);
+  }
+
+  &.hyprland__workspace_occupied {
+    background-color: rgba($background, 0.5);
+
+    &:hover {
+      background-color: rgba($background, 0.75);
+    }
+  }
+
+  &.hyprland__workspace_active {
+    background-color: $active-background;
+
+    min-height: calc($size * 2);
+
+    &:hover {
+      background-color: adjust-color($active-background, $lightness: -5%);
+    }
+  }
+}

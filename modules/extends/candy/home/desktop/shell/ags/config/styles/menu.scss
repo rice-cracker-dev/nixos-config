@@ -1,0 +1,18 @@
+@use './button.scss';
+@use './card.scss';
+
+menu {
+  @extend .card, .card-surface-100;
+
+  padding: 8px;
+}
+
+menuitem {
+  @extend .btn, .btn-ghost;
+
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}

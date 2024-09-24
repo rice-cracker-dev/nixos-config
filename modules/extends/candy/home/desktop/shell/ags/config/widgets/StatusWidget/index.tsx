@@ -1,11 +1,20 @@
-import { Card } from '$/components';
+import { Gtk, Widget } from 'astal';
 import Volume from './Volume';
+import Network from './Network';
+import Bluetooth from './Bluetooth';
 
-const StatusWidget = () => {
+const StatusWidget = (props: Omit<Widget.BoxProps, 'child' | 'children'>) => {
   return (
-    <Card square variant="surface-100">
+    <box
+      {...props}
+      orientation={Gtk.Orientation.VERTICAL}
+      spacing={16}
+      css="margin: 4px 0"
+    >
+      <Bluetooth />
       <Volume />
-    </Card>
+      <Network />
+    </box>
   );
 };
 

@@ -1,6 +1,9 @@
-@use 'text';
-@use 'card';
-@use 'button';
+@use './button.scss';
+@use './card.scss';
+@use './menu.scss';
+@use './text.scss';
+@use './widgets';
+@use './windows';
 
 * {
   all: unset;

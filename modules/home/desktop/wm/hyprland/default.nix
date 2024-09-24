@@ -67,8 +67,10 @@
 
         # ags
         "blur, gtk-layer-shell"
-        "ignorealpha 0.5, gtk-layer-shel"
-        "xray, gtk=layer-shell"
+        "blurpopups, gtk-layer-shell"
+        "ignorezero, gtk-layer-shell"
+        "xray, gtk-layer-shell"
+
         "blur, ags-*"
         "ignorezero, ags-*"
         "xray, ags-*"
@@ -90,7 +92,7 @@
 
       general = {
         gaps_in = "4";
-        gaps_out = "4";
+        gaps_out = "8";
 
         layout = "dwindle";
       };

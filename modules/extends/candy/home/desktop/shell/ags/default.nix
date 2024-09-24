@@ -1,6 +1,8 @@
 {inputs, pkgs, ...}: let
-  agsPkgs = inputs.ags.packages.${pkgs.system};
+  agsPkgs = inputs.astal.packages.${pkgs.system};
 in {
+  wayland.windowManager.hyprland.settings.exec-once = ["ags"];
+
   programs.ags = {
     enable = true;
     configDir = ./config;
@@ -9,7 +11,9 @@ in {
       agsPkgs.network
       agsPkgs.wireplumber
       agsPkgs.bluetooth
-      pkgs.pipewire pkgs.wireplumber
+      agsPkgs.battery
+      agsPkgs.hyprland
+      agsPkgs.tray
     ];
   };
 }
