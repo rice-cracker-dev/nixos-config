@@ -13,7 +13,9 @@
     brightnessctl
   ];
 
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = let
+    nvf = inputs.nvf-config.packages.${pkgs.system}.default;
+  in {
     enable = true;
 
     settings = let
@@ -26,6 +28,9 @@
       "$editor" = "${pkgs.neovim-unwrapped}/bin/nvim";
       "$browser" = lib.mkIf config.browser.enable "${lib.getExe config.browser.package}";
       "$fileManager" = lib.mkIf config.fileManager.enable "${lib.getExe config.fileManager.package}";
+      "$editor" = "${nvf}/bin/nvim";
+      "$browser" = lib.mkIf config.browser.enable "${lib.getExe config.browser.package}";
+      "$fileManager" = lib.mkIf config.fileManager.enable "${config.fileManager.package}/bin/thunar";
 
       env = [
         # use igpu for hyprland
