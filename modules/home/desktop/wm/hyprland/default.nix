@@ -25,9 +25,6 @@
       # default variables
       "$mainMod" = "SUPER";
       "$terminal" = "${config.programs.kitty.package}/bin/kitty";
-      "$editor" = "${pkgs.neovim-unwrapped}/bin/nvim";
-      "$browser" = lib.mkIf config.browser.enable "${lib.getExe config.browser.package}";
-      "$fileManager" = lib.mkIf config.fileManager.enable "${lib.getExe config.fileManager.package}";
       "$editor" = "${nvf}/bin/nvim";
       "$browser" = lib.mkIf config.browser.enable "${lib.getExe config.browser.package}";
       "$fileManager" = lib.mkIf config.fileManager.enable "${config.fileManager.package}/bin/thunar";
