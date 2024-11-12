@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }: {
   imports = [
@@ -9,20 +10,22 @@
   ];
 
   home.packages = with pkgs; [
-    wl-clipboard
     brightnessctl
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
 
-    settings = {
+    settings = let
+      grimblast = lib.getExe pkgs.grimblast;
+      satty = lib.getExe pkgs.satty;
+    in {
       # default variables
       "$mainMod" = "SUPER";
       "$terminal" = "${config.programs.kitty.package}/bin/kitty";
       "$editor" = "${pkgs.neovim-unwrapped}/bin/nvim";
-      # "$browser" = "${lib.getExe pkgs.floorp}";
-      "$fileManager" = "${pkgs.kdePackages.dolphin}/bin/dolphin";
+      "$browser" = lib.mkIf config.browser.enable "${lib.getExe config.browser.package}";
+      "$fileManager" = lib.mkIf config.fileManager.enable "${lib.getExe config.fileManager.package}";
 
       env = [
         # use igpu for hyprland
@@ -59,6 +62,9 @@
         # satty
         "noanim, class:(com.gabm.satty)"
         "float, class:(com.gabm.satty)"
+
+        # waydroid
+        "fullscreen, class:^(Waydroid)$"
       ];
 
       layerrule = [
@@ -69,11 +75,10 @@
         "blur, gtk-layer-shell"
         "blurpopups, gtk-layer-shell"
         "ignorezero, gtk-layer-shell"
-        "xray, gtk-layer-shell"
+        "noanim, gtk-layer-shell"
 
         "blur, ags-*"
         "ignorezero, ags-*"
-        "xray, ags-*"
 
         # sexshell
         "blur, qs-blur-*"
@@ -104,10 +109,7 @@
       decoration = {
         rounding = "4";
 
-        drop_shadow = "false";
-        # shadow_range = "4";
-        # shadow_render_power = "3";
-        # "col.shadow" = "rgba(1a1a1aee)";
+        shadow.enabled = "false";
 
         # dim_inactive = "true";
 
@@ -143,6 +145,7 @@
         "$mainMod, q, exec, $browser"
         "$mainMod, d, exec, $launcher"
         "$mainMod, e, exec, $fileManager"
+        "$mainMod SHIFT, c, exec, ${lib.getExe pkgs.hyprpicker} | wl-copy"
 
         # toggle floating window
         "$mainMod, v, togglefloating"
@@ -184,6 +187,12 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
 
+        # move window in direction
+        "$mainMod CTRL, up, movewindow, u"
+        "$mainMod CTRL, down, movewindow, d"
+        "$mainMod CTRL, left, movewindow, l"
+        "$mainMod CTRL, right, movewindow, r"
+
         # scroll through workspaces
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
@@ -192,10 +201,10 @@
         "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
 
         # screenshotting
-        ", PRINT, exec, grimblast copysave screen"
-        "CTRL, PRINT, exec, grimblast copysave area"
-        "ALT, PRINT, exec, grimblast save area - | satty -f -"
-        "SHIFT, PRINT, exec, grimblast copysave active"
+        ", PRINT, exec, ${grimblast} copysave screen"
+        "CTRL, PRINT, exec, ${grimblast} copysave area"
+        "ALT, PRINT, exec, ${grimblast} save area - | ${satty} -f -"
+        "SHIFT, PRINT, exec, ${grimblast} copysave active"
       ];
 
       bindm = [

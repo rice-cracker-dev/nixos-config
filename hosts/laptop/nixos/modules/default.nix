@@ -2,6 +2,6 @@
   imports = [
     ./boot
     ./networking
-    # ./nvidia # driver broken lmao
+    ./nvidia # driver broken lmao
   ];
 }

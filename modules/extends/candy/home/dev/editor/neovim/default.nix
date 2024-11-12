@@ -1,10 +1,10 @@
 {
-  programs.neovim-flake.settings.vim = {
-    theme = {
-      enable = true;
-      name = "rose-pine";
-      style = "main";
-      transparent = true;
-    };
-  };
+  #programs.nvf.settings.vim = {
+  #  theme = {
+  #    enable = true;
+  #    name = "catppuccin";
+  #    style = "mocha";
+  #    transparent = true;
+  #  };
+  #};
 }

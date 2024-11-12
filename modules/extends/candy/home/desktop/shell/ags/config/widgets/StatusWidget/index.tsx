@@ -1,4 +1,4 @@
-import { Gtk, Widget } from 'astal';
+import { Gtk, Widget } from 'astal/gtk3';
 import Volume from './Volume';
 import Network from './Network';
 import Bluetooth from './Bluetooth';

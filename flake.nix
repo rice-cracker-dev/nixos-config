@@ -9,14 +9,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur.url = "github:nix-community/NUR";
+
     # use nix-colors to handle colorschemes
     nix-colors.url = "github:misterio77/nix-colors";
 
     # editor
-    neovim-flake.url = "github:NotAShelf/neovim-flake";
+    nvf-config.url = "github:rice-cracker-dev/nvf-config";
 
     # hyprwm
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -44,12 +46,8 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    lib = nixpkgs.lib;
+  outputs = {nixpkgs, ...} @ inputs: let
+    inherit (nixpkgs) lib;
     username = "khoa";
   in {
     nixosConfigurations = {

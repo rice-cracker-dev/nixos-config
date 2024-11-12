@@ -1,7 +1,11 @@
-{inputs, pkgs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   agsPkgs = inputs.astal.packages.${pkgs.system};
 in {
-  wayland.windowManager.hyprland.settings.exec-once = ["ags"];
+  wayland.windowManager.hyprland.settings.exec-once = ["ags run"];
 
   programs.ags = {
     enable = true;
@@ -14,6 +18,7 @@ in {
       agsPkgs.battery
       agsPkgs.hyprland
       agsPkgs.tray
+      agsPkgs.notifd
     ];
   };
 }

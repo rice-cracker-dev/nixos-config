@@ -1,9 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ...
+}: let
+  catppuccinKde = pkgs.catppuccin-kde.override {
+    flavour = ["macchiato"];
+    accents = ["mauve"];
+  };
+in {
   home.packages = with pkgs; [
     qt6.qtwayland
     qt6.qtsvg
-    kdePackages.breeze
-    kdePackages.qqc2-desktop-style
+    #kdePackages.breeze
+    #kdePackages.qqc2-desktop-style
   ];
 
   home.file.".icons/default/index.theme".text = ''
@@ -42,10 +50,18 @@
   in {
     "qt6ct/qt6ct.conf".text = qtctConf;
     "qt5ct/qt5ct.conf".text = qtctConf;
-
-    "kdeglobals".source = "${pkgs.catppuccin-kde.override {
-      flavour = ["macchiato"];
-      accents = ["mauve"];
-    }}/share/color-schemes/CatppuccinMacchiatoMauve.colors";
+    "kdeglobals".source = "${catppuccinKde}/share/color-schemes/CatppuccinMacchiatoMauve.colors";
   };
+
+  # programs.plasma = {
+  #   resetFiles = ["kdeglobals"];
+  #   configFile.kdeglobals =
+  #     builtins.fromJSON
+  #     (builtins.readFile "${pkgs.runCommand "kdeglobals" {
+  #       buildInputs = [pkgs.python3];
+  #     } ''
+  #       mkdir $out
+  #       python ${inputs.self}/scripts/kdeConfigToJSON.py ${catppuccinKde}/share/color-schemes/CatppuccinMacchiatoMauve.colors > $out/kdeglobals
+  #     ''}/kdeglobals");
+  # };
 }

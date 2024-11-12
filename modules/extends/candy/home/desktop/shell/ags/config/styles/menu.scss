@@ -1,18 +1,26 @@
 @use './button.scss';
 @use './card.scss';
+@use './palette.scss' as palette;
 
 menu {
   @extend .card, .card-surface-100;
 
-  padding: 8px;
+  padding: 0px;
 }
 
 menuitem {
   @extend .btn, .btn-ghost;
 
-  margin-bottom: 4px;
+  border-radius: 0;
+  padding: 4px 8px;
+
+  font-size: 14px;
+
+  &:first-child {
+    border-radius: palette.$radius palette.$radius 0 0;
+  }
 
   &:last-child {
-    margin-bottom: 0px;
+    border-radius: 0 0 palette.$radius palette.$radius;
   }
 }

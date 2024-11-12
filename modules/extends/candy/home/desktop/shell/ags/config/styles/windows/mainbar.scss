@@ -1,7 +1,7 @@
-@use 'palette.scss' as palette;
+@use '../palette.scss' as palette;
 
 .mainbar {
-  background-color: rgba(map-get(palette.$colors, 'surface-100'), 0.5);
+  background-color: rgba(map-get(palette.$colors, 'surface-200'), 0.5);
 }
 
 .mainbar__main {

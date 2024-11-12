@@ -1,0 +1,15 @@
+@use './palette.scss' as p;
+
+.slider {
+  background-color: p.$surface-100;
+  border-radius: p.$radius;
+}
+
+.slider trough {
+  min-height: 32px;
+}
+
+.slider highlight {
+  background-color: p.$primary;
+  border-radius: p.$radius;
+}

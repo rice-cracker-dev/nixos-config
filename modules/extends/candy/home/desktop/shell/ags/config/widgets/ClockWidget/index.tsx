@@ -1,4 +1,5 @@
-import { Gtk, Variable, Widget, bind } from 'astal';
+import { Variable } from 'astal';
+import { Gtk, Widget } from 'astal/gtk3';
 import { ScrollingNumberLabel } from '$/components';
 import { time } from '$/lib';
 
@@ -8,7 +9,7 @@ const formattedTime = Variable.derive([time], (t) =>
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-  })
+  }),
 );
 
 const ClockWidget = (props: Omit<Widget.BoxProps, 'child' | 'children'>) => {

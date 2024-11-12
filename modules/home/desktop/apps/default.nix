@@ -11,8 +11,7 @@
     vlc
     qbittorrent
     # libreoffice-qt
-    krita
-    figma-linux
+    # figma-linux
     electrum
     gparted
   ];

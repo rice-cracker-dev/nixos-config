@@ -1,4 +1,4 @@
-$surface-100: #1e1e2e;
+$surface-100: #2c2c40;
 $surface-200: #181825;
 $primary: #cba6f7;
 $secondary: #89b4fa;
@@ -6,6 +6,8 @@ $error: #f38ba8;
 $warning: #fab387;
 $success: #a6e3a1;
 $text: #cdd6f4;
+
+$radius: 16px;
 
 $colors: (
   surface-100: $surface-100,
@@ -16,5 +18,4 @@ $colors: (
   warning: $warning,
   success: $success,
   text: $text,
-)
-
+);

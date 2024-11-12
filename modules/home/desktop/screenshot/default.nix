@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  imports = [./grimblast];
+  imports = [./grimblast ./flameshot];
 
   options.screenshotsDir = lib.mkOption {
     type = lib.types.str;

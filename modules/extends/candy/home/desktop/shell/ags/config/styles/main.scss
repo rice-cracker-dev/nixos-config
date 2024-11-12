@@ -2,10 +2,10 @@
 @use './card.scss';
 @use './menu.scss';
 @use './text.scss';
+@use './scale.scss';
 @use './widgets';
 @use './windows';
 
 * {
   all: unset;
-  transition-duration: 150ms;
 }

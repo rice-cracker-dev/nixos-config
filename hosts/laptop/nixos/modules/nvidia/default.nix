@@ -1,60 +1,24 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  nix.settings = {
-    substituters = ["https://cuda-maintainers.cachix.org"];
-    trusted-public-keys = ["cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="];
-  };
+{ lib, ... }: {
+  # This runs only intel/amdgpu igpus and nvidia dgpus do not drain power.
+  ##### disable nvidia, very nice battery life.
+  boot.extraModprobeConfig = lib.mkDefault ''
+    blacklist nouveau
+    options nouveau modeset=0
+  '';
+  
+  services.udev.extraRules = lib.mkDefault ''
+    # Remove NVIDIA USB xHCI Host Controller devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
 
-  # Libva driver
-  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-  };
+    # Remove NVIDIA USB Type-C UCSI devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
 
-  # Install some packages
-  environment.systemPackages = with pkgs; [
-    lshw
-  ];
+    # Remove NVIDIA Audio devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
 
-  # Enable CUDA
-  # nixpkgs.config.cudaSupport = true;
-
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
-
-  # Load nvidia driver
-  services.xserver.videoDrivers = ["nvidia"];
-
-  # Nvidia settings
-  hardware.nvidia = {
-    modesetting.enable = true;
-
-    nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-
-    open = false;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
+    # Remove NVIDIA VGA/3D controller devices
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+  '';
+  boot.blacklistedKernelModules = lib.mkDefault [ "nouveau" "nvidia" ];
 }
+

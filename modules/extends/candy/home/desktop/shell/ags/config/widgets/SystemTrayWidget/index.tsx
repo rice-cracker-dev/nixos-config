@@ -1,4 +1,5 @@
-import { Astal, bind, Gdk, Gtk, Widget } from 'astal';
+import { Gdk, Gtk, Widget } from 'astal/gtk3';
+import { bind } from 'astal';
 import AstalTray from 'gi://AstalTray';
 
 const tray = AstalTray.get_default();
@@ -18,10 +19,7 @@ const TrayItem = (id: string, item: AstalTray.TrayItem) => {
 
   return (
     <button name={id} className="btn btn-ghost btn-square" onClick={onClick}>
-      <icon
-        icon={bind(item, 'iconName').as((name) => name ?? '')}
-        pixbuf={bind(item, 'iconPixbuf')}
-      />
+      <icon g_icon={bind(item, 'gicon')} />
     </button>
   );
 };

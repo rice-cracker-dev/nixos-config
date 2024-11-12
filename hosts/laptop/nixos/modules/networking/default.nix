@@ -1,6 +1,12 @@
 {
-  networking.hostName = "khoa-laptop";
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
-  networking.wireguard.enable = true;
+  networking = {
+    hostName = "khoa-laptop";
+    networkmanager.enable = true;
+    wireguard.enable = true;
+    
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [ 8888 ];
+    };
+  };
 }

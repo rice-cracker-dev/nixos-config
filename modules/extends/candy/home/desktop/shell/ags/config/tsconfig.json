@@ -7,13 +7,14 @@
     "strict": true,
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
-    "checkJs": true,
-    "allowJs": true,
+    //"checkJs": true,
+    //"allowJs": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "/home/khoa/.local/share/ags/src/jsx",
+    "experimentalDecorators": true,
+    "jsxImportSource": "/home/khoa/.local/share/ags/gtk3",
     "paths": {
       "astal": ["/home/khoa/.local/share/ags"],
-      "astal/*": ["/home/khoa/.local/share/ags/src/*"],
+      "astal/*": ["/home/khoa/.local/share/ags/*"],
       "$/*": ["./*"]
     }
   }

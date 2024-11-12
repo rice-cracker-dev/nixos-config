@@ -3,8 +3,10 @@
 @use 'palette' as palette;
 
 .btn {
-  border-radius: 4px;
+  border-radius: palette.$radius;
   padding: 4px 8px;
+
+  transition-duration: 150ms;
 
   &.btn-square {
     padding: 4px;
@@ -42,6 +44,18 @@
         }
       }
 
+      &.btn-soft {
+        background-color: rgba($color, 0.25);
+
+        &:hover {
+          background-color: rgba($color, 0.5);
+        }
+
+        &:active {
+          background-color: rgba($color, 0.75);
+        }
+      }
+
       &:hover {
         background-color: color.adjust($color, $lightness: $lightness);
       }
@@ -49,6 +63,19 @@
       &:active {
         background-color: color.adjust($color, $lightness: $lightness);
       }
+    }
+  }
+
+  &.btn-soft {
+    background-color: rgba(#ffffff, 0.025);
+    color: map.get(palette.$colors, 'text');
+
+    &:hover {
+      background: rgba(#ffffff, 0.05);
+    }
+
+    &:active {
+      background: rgba(#ffffff, 0.1);
     }
   }
 

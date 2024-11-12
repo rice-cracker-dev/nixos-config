@@ -1,4 +1,5 @@
-import { Gtk, Variable, bind } from 'astal';
+import { bind, Variable } from 'astal';
+import { Gtk } from 'astal/gtk3';
 import AstalBluetooth from 'gi://AstalBluetooth';
 
 const bluetooth = AstalBluetooth.get_default();
@@ -14,9 +15,9 @@ const Bluetooth = () => {
       return isConnected
         ? bluetoothConnectedIcon
         : isPowered
-        ? bluetoothIcon
-        : bluetoothDisabledIcon;
-    }
+          ? bluetoothIcon
+          : bluetoothDisabledIcon;
+    },
   );
 
   return (

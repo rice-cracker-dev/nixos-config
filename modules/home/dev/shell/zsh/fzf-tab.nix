@@ -8,6 +8,7 @@
   ];
 
   programs.zsh.initExtra = ''
+    setopt glob_dots
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     zstyle ':completion:*:git-checkout:*' sort false
     zstyle ':completion:*:descriptions' format '[%d]'

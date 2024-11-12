@@ -1,4 +1,4 @@
-import { Widget } from 'astal';
+import { Widget } from 'astal/gtk3';
 
 export interface ScrollingNumberWidgetProps extends Widget.StackProps {
   labelProps: Widget.LabelProps;

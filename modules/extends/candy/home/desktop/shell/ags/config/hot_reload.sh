@@ -4,7 +4,7 @@ export SHELL_DEBUG=all
 
 reload() {
 	pkill gjs
-	ags -c . &
+	DEBUG=1 ags -c . &
 }
 
 reload

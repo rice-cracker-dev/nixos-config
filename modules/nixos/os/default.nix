@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./flatpak
+    ./kernel
+    ./keyring
     ./locale
     ./networking
     ./nh

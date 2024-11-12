@@ -1,5 +1,6 @@
 import { getValueFromArrayRange } from '$/lib';
-import { bind, Gtk, Variable } from 'astal';
+import { bind, Variable } from 'astal';
+import { Gtk } from 'astal/gtk3';
 import AstalNetwork from 'gi://AstalNetwork';
 
 const network = AstalNetwork.get_default();
@@ -23,7 +24,7 @@ const WiredIcon = ({ wired }: { wired: AstalNetwork.Wired | null }) => {
   );
 };
 
-const wifiStrengthLevelIcons = [
+export const wifiStrengthLevelIcons = [
   'wifi-none-fill-symbolic',
   'wifi-low-fill-symbolic',
   'wifi-medium-fill-symbolic',
@@ -41,7 +42,7 @@ const WifiIcon = ({ wifi }: { wifi: AstalNetwork.Wifi | null }) => {
       return internet === AstalNetwork.Internet.CONNECTED
         ? getValueFromArrayRange(wifiStrengthLevelIcons, 0, 100, strength)
         : 'wifi-slash-symbolic';
-    }
+    },
   );
 
   return <icon icon={iconName()} />;

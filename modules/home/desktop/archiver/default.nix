@@ -3,6 +3,6 @@
     unrar
     unzip
     p7zip
-    kdePackages.ark
+    xarchiver
   ];
 }

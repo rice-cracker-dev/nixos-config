@@ -16,5 +16,7 @@
     tree
     # postman
     bruno
+    godot_4
+    ngrok
   ];
 }

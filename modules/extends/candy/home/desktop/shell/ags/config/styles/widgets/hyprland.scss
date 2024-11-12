@@ -12,6 +12,8 @@
   min-width: $size;
   min-height: $size;
 
+  transition-duration: 150ms;
+
   &:hover {
     background-color: rgba($background, 0.5);
   }

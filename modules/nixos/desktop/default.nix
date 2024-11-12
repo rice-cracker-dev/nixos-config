@@ -1,15 +1,17 @@
-{
+{pkgs, ...}: {
   imports = [
     ./bluetooth
     ./dconf
     ./display-manager
     ./fonts
     ./hyprland
-    # ./plasma
     ./polkit
     ./sound
     ./steam
     ./virtualisation
     ./x11
+    ./xfce
   ];
+
+  environment.systemPackages = [pkgs.wl-clipboard];
 }

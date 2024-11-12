@@ -1,24 +1,21 @@
-import { App, Astal, bind, Gdk, Gtk, Variable, Widget } from 'astal';
+import { App, Astal, Gtk, Widget } from 'astal/gtk3';
 import { ClockWidget, StatusWidget } from '$/widgets';
+import {
+  toggleMenuType,
+  SidebarMenuType,
+  currentMenuType,
+} from '$/windows/SideBar';
 import HyprlandWidget from '$/widgets/HyprlandWidget';
-import PopupWindow, { PopupWindowPosition } from '../PopupWindow';
 import SystemTrayWidget from '$/widgets/SystemTrayWidget';
-
-const getWidgetOffsetY = (widget: Gtk.Widget): [number, Astal.WindowAnchor] => {
-  const screenY = Gdk.Screen.height();
-
-  const topLevel = widget.get_toplevel();
-  const [, , destY] = widget.translate_coordinates(topLevel, 0, 0);
-  const wHeight = widget.get_allocated_height();
-
-  if (destY < screenY / 2) {
-    return [destY, Astal.WindowAnchor.TOP];
-  }
-
-  return [screenY - destY - wHeight, Astal.WindowAnchor.BOTTOM];
-};
+import { debug } from '..';
 
 const MainBar = (monitor: number) => {
+  const homeButtonOnClick: Widget.ButtonProps['onClick'] = (_, event) => {
+    if (event.button === Astal.MouseButton.SECONDARY && debug) {
+      App.inspector();
+    }
+  };
+
   const window = (
     <window
       className="mainbar"
@@ -37,7 +34,10 @@ const MainBar = (monitor: number) => {
         orientation={Gtk.Orientation.VERTICAL}
       >
         <box halign={Gtk.Align.CENTER} valign={Gtk.Align.START}>
-          <button className="btn btn-ghost btn-primary btn-square">
+          <button
+            className="btn btn-ghost btn-primary btn-square"
+            onClick={homeButtonOnClick}
+          >
             <icon icon="nixos-symbolic" halign={Gtk.Align.CENTER} />
           </button>
         </box>
@@ -51,7 +51,15 @@ const MainBar = (monitor: number) => {
           spacing={16}
         >
           <SystemTrayWidget />
-          <button className="btn btn-square btn-ghost">
+          <button
+            className={currentMenuType(
+              (type) =>
+                `btn btn-square ${
+                  type === SidebarMenuType.SYSTEM ? 'btn-primary' : 'btn-ghost'
+                }`
+            )}
+            onClicked={() => toggleMenuType(SidebarMenuType.SYSTEM)}
+          >
             <StatusWidget halign={Gtk.Align.CENTER} />
           </button>
           <button className="btn btn-square btn-ghost">

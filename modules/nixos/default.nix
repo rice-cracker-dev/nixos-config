@@ -1,5 +1,6 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.nur.nixosModules.nur
     ./desktop
     ./dev
     ./os

@@ -3,7 +3,6 @@
     ./apps
     ./archiver
     ./browser
-    ./dm
     ./fastfetch
     ./filemanager
     ./games

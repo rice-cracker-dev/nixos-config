@@ -17,7 +17,7 @@
 
   config = {
     home.packages = [
-      pkgs.qt5ct
+      pkgs.libsForQt5.qt5ct
       pkgs.qt6ct
       pkgs.nwg-look
     ];

@@ -1,12 +1,12 @@
-@use "sass:map";
-@use "palette" as palette;
+@use 'sass:map';
+@use 'palette' as palette;
 
 $opacity: 1;
 $surface-opacity: 0.5;
 $surface-border-opacity: 0.25;
 
 .card {
-  border-radius: 4px;
+  border-radius: palette.$radius;
   padding: 4px 8px;
 
   &.card-square {
@@ -14,18 +14,23 @@ $surface-border-opacity: 0.25;
   }
 
   @each $name, $color in palette.$colors {
-    @if (str-index($string: $name, $substring: "surface")) {
+    @if (str-index($string: $name, $substring: 'surface')) {
       &.card-#{$name} {
         background-color: rgba($color, $surface-opacity);
-        border: 1px solid rgba(map.get(palette.$colors, 'text'), $surface-border-opacity);
+        border: 1px
+          solid
+          rgba(map.get(palette.$colors, 'text'), $surface-border-opacity);
         color: map.get(palette.$colors, 'text');
       }
     } @else {
       &.card-#{$name} {
         background-color: rgba($color, $opacity);
-        color: map.get(palette.$colors, 'surface-100'); 
+        color: map.get(palette.$colors, 'surface-100');
       }
     }
   }
-}
 
+  &.card-no-border {
+    border: none;
+  }
+}

@@ -1,4 +1,5 @@
-import { bind, Gdk, Gtk, Variable, Widget } from 'astal';
+import { Gtk, Widget } from 'astal/gtk3';
+import { bind, Variable } from 'astal';
 import AstalHyprland from 'gi://AstalHyprland';
 
 const hyprland = AstalHyprland.get_default();

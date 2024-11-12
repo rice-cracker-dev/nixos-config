@@ -1,10 +1,8 @@
-{config, ...}: {
+{config, pkgs, lib, ...}: {
   imports = [./hyprpaper.nix];
 
   wayland.windowManager.hyprland.settings = {
-    "$launcher" = "rofi -show drun";
-
-    exec-once = ["quickshell"];
+    "$launcher" = "${lib.getExe pkgs.rofi-wayland} -show drun";
 
     general = with config.colorScheme.palette; {
       "col.inactive_border" = "rgba(${base03}ff)";
